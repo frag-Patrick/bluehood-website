@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Blue Hood</title>
+  <style>
+    @font-face {
+        font-family: 'HACKED';
+        src: url(HACKED-Regular.ttf);
+        font-family: 'FiraCode';
+        src: url(FiraCode-Regular.ttf);
+    }
+    body {
+      background: #0D1117;
+      color: white;
+      margin: 0;
+      font-family: 'FiraCode', monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+      margin-top: 30px;
+      margin-bottom: 40px; /* Abstand zur Story */
+    }
+
+    .nav-btn {
+      position: relative;
+      font-family: 'FiraCode', monospace;
+      font-size: 20px;
+      background: #2A3039;
+      color: #fff;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 25px;
+      border: none;
+      text-decoration: none;
+      display: inline-block;
+      ;
+    }
+
+    .nav-btn:hover {
+      background: #0965ef;
+      color: #fff;
+      transition: color 0.3s;
+      transform: scale(1.05);
+      box-shadow: #0965ef 0px 2px 30px;
+    }
+
+    .headline {
+        font-size: 80px;
+        margin-top: 60px;
+        margin-bottom: 60px;
+        text-align: center;
+        font-weight: normal;
+        font-family: 'FiraCode', monospace;
+        letter-spacing: 0.1em;
+    }
+
+    .card-row {
+      display: flex;
+      gap: 50px;
+      justify-content: center;
+      margin-top: 60px;
+      margin-bottom: 40px;
+      margin-left: 750px;
+    }
+
+    .card {
+      background: #161B22;
+      border-radius: 50px;
+      padding: 30px;
+      min-height: 380px;
+      min-width: 300px;
+      max-width: 320px;
+      box-sizing: border-box;
+      box-shadow: 0 0 20px 0 rgba(0,0,0,0.25);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      font-family: 'FiraCode', monospace;
+      font-size: 28px;
+      color: #fff;
+      transition: box-shadow 0.3s, border 0.3s;
+      border: none;
+    }
+
+    .card.active {
+      border: 3px solid #0965ef;
+      box-shadow: 0 0 40px 10px #0965ef;
+    }
+
+    .card-title {
+      font-size: 32px;
+      margin-bottom: 20px;
+      letter-spacing: 0.1em;
+      text-align: left;
+    }
+
+    .card-desc {
+      font-size: 24px;
+      margin-bottom: 30px;
+      white-space: pre-line;
+    }
+
+    .card-btn {
+      font-family: 'FiraCode', monospace;
+      font-size: 22px;
+      background: #2A3039;
+      color: #fff;
+      padding: 12px 25px;
+      border-radius: 25px;
+      border: 2px solid #0965ef;
+      cursor: pointer;
+      box-shadow: 0 0 20px 0 #0965ef;
+      margin-top: 10px;
+      transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .card-btn:hover {
+      background: #0965ef;
+      color: #fff;
+      box-shadow: 0 0 30px 0 #0965ef;
+    }
+
+    .card-inactive-btn {
+      font-family: 'FiraCode', monospace;
+      font-size: 22px;
+      background: #2A3039;
+      color: #bfc7d5;
+      padding: 12px 32px;
+      border-radius: 25px;
+      border: none;
+      margin-top: 10px;
+      text-decoration: none;
+      display: inline-block;
+      cursor: not-allowed;
+      opacity: 0.8;
+    }
+
+    .read-btn {
+      position: relative;
+      font-family: 'FiraCode', monospace;
+      font-size: 20px;
+      background: #2A3039;
+      color: #fff;
+      padding: 15px 25px;
+      cursor: pointer;
+      border-radius: 35px;
+      border: 5px solid #0965ef;
+      text-decoration: none;
+      display: inline-block;
+      box-shadow: #0965ef 0px 2px 30px; /* Leuchten-Effekt */
+    }
+
+    .read-btn:hover {
+      background: #0965ef;
+      color: #fff;
+      transition: background 0.3s, color 0.3s;
+      transform: scale(1.05);
+    }
+
+    p {
+      max-width: 850px;
+      margin-bottom: 80px; /* Abstand zum Button */
+      text-align: left;
+      font-size: 30px;
+    }
+
+    #lesen {
+        margin-bottom: 40px;
+        font-size: 30px;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html" class="nav-btn">/home</a>
+    <a href="#" class="nav-btn">/story-lesen</a>
+    <a href="#" class="nav-btn">/whoami</a>
+    <a href="#" class="nav-btn">/faq</a>
+  </nav>
+  <h1 class="headline">Staffel 0rigins</h1>
+  <div class="card-row">
+    <div class="card active">
+      <div class="card-title">Folge.1</div>
+      <div class="card-desc">Aller Anfang ist Hackbar.md</div>
+      <a href="#" class="card-btn">&gt;_ jetzt lesen</a>
+    </div>
+    <div class="card">
+      <div class="card-title">Folge.2</div>
+      <div class="card-desc">40?4awd?????fe?aw32j.md</div>
+      <span class="card-inactive-btn">erscheint bald</span>
+    </div>
+    <div class="card" style="opacity:0.5;">
+      <div class="card-title">Folge.3</div>
+      <div class="card-desc">232j315j1nckd09akj.md</div>
+      <span class="card-inactive-btn">erscheint bald</span>
+    </div>
+  </div>
+test2
+  </body>
+</html>

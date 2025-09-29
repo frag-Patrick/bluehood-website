@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Blue Hood</title>
+  <style>
+    @font-face {
+        font-family: 'HACKED';
+        src: url(HACKED-Regular.ttf);
+        font-family: 'FiraCode';
+        src: url(FiraCode-Regular.ttf);
+    }
+    body {
+      background: #111;
+      color: white;
+      margin: 0;
+      font-family: 'FiraCode', monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+      margin-top: 30px;
+      margin-bottom: 40px; /* Abstand zur Story */
+    }
+
+    .nav-btn {
+      position: relative;
+      font-family: 'FiraCode', monospace;
+      font-size: 20px;
+      background: #2A3039;
+      color: #fff;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 25px;
+      border: none;
+      text-decoration: none;
+      display: inline-block;
+      ;
+    }
+
+    .nav-btn:hover {
+      background: #0965ef;
+      color: #fff;
+      transition: color 0.3s;
+      transform: scale(1.05);
+      box-shadow: #0965ef 0px 2px 30px;
+    }
+
+    .read-btn {
+      position: relative;
+      font-family: 'FiraCode', monospace;
+      font-size: 20px;
+      background: #2A3039;
+      color: #fff;
+      padding: 15px 25px;
+      cursor: pointer;
+      border-radius: 35px;
+      border: 5px solid #0965ef;
+      text-decoration: none;
+      display: inline-block;
+      box-shadow: #0965ef 0px 2px 30px; /* Leuchten-Effekt */
+    }
+
+    .read-btn:hover {
+      background: #0965ef;
+      color: #fff;
+      transition: background 0.3s, color 0.3s;
+      transform: scale(1.05);
+    }
+
+    p {
+      max-width: 850px;
+      margin-bottom: 80px; /* Abstand zum Button */
+      text-align: left;
+      font-size: 30px;
+    }
+
+    #lesen {
+        margin-bottom: 40px;
+        font-size: 30px;
+    }
+    .headline {
+        font-size: 120px;
+        margin-top: 60px;
+        margin-bottom: 60px;
+        text-align: center;
+        font-weight: normal;
+        font-family: HACKED, monospace;
+        background-image: url('background.png');
+        background-size: 100%;
+        background-repeat: repeat;
+        background-position: center;
+
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+    }
+
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html" class="nav-btn">/home</a>
+    <a href="story-lesen.html" class="nav-btn">/story-lesen</a>
+    <a href="#" class="nav-btn">/whoami</a>
+    <a href="#" class="nav-btn">/faq</a>
+  </nav>
+  <h1 class="headline">Blue Hood_Origins</h1>
+  <section>
+    <p>
+      In Blue Hood Origins kämpfen drei junge Hacker gegen Korruption, Überwachung und digitale Manipulation.<br><br>
+      Eine Geschichte über Macht, Freundschaft und den Mut, das Richtige zu tun - näher an unserer Realität, als du denkst.
+    </p>
+  </section>
+
+  <button class="read-btn" id="lesen"><span></span>>_ kostenlos lesen</button>
+</body>
+</html>
