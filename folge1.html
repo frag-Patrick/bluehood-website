@@ -58,7 +58,7 @@
     }
 
     .headline {
-        font-size: 80px;
+        font-size: 30px;
         margin-top: 60px;
         margin-bottom: 60px;
         text-align: center;
@@ -150,35 +150,19 @@
         cursor: not-allowed;
         opacity: 0.8;
     }
-
-    .read-btn {
-        position: relative;
-        font-family: 'FiraCode', monospace;
-        font-size: 22px;
-        background: #2A3039;
-        color: #fff;
-        padding: 15px 22px;
-        margin-bottom: -20px;
-        cursor: pointer;
-        border-radius: 30px;
-        border: 5px solid #0965ef;
-        text-decoration: none;
-        display: inline-block;
-        box-shadow: #0965ef 0px 2px 30px; /* Leuchten-Effekt */
-    }
-
-    .read-btn:hover {
-        background: #0965ef;
-        color: #fff;
-        transition: background 0.3s, color 0.3s;
-        transform: scale(1.05);
+    .content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 80px; /* Abstand zum unteren Rand */
+        padding: 0 20px; /* Padding für kleine Bildschirme */
     }
 
     p {
         max-width: 850px;
-        margin-bottom: 80px; /* Abstand zum Button */
         text-align: left;
-        font-size: 30px;
+        font-size: 25px;
+        line-height: 1.4;
     }
 
     .read-time {
@@ -191,6 +175,15 @@
         margin-bottom: 40px;
         font-size: 30px;
     }
+    span {
+        color: #087bfe;
+    }
+    h2 {
+        font-size: 35px;
+        margin-top: 40px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
   </style>
 </head>
 <body>
@@ -200,20 +193,36 @@
     <a href="whoami.html" class="nav-btn">/whoami</a>
     <a href="faq.html" class="nav-btn">/faq</a>
   </nav>
-  <h1 class="headline">/Staffel_0rigins</h1>
-  <div class="card-row">
-    <div class="card active">
-      <div class="card-title">Folge.1</div>
-      <div class="card-desc">Aller Anfang ist Hackbar.md</div>
-      <div class="read-time">40 Minuten Lesezeit</div>
-      <a href="folge1.html" class="read-btn">&gt;_ jetzt lesen</a>
+  <h1 class="headline">/bluehood/0rigins/Folge1_Aller_Anfang_ist_Hackbar.md — <span>read-only</span></h1>
+    <div class="content">
+        <p>
+            "Wenn du das hier liest, hat der Plan entweder geklappt oder irgendwer hat einen Weg in meinen Server und durch mein Labyrinth an Sicherheitsvorkehrungen gefunden. Ich schreibe diese Zeilen, um Struktur in meinen Kopf zu bringen, denn das Chaos, das wir verursacht haben, hat auf einem anderen Level Wellen geschlagen, so das ich mir nicht mal vorstellen konnte.
+        </p>
+        <p>
+            Aber vielleicht sollte ich mich erstmal vorstellen: Hi, Ich bin Luke. Programmierer und der Architekt hinter diesem Chaos.
+        </p>
+        <p>
+            Alles begann, als ich mein Zuhause gegen einen gierigen Großkonzern verteidigen musste, und dabei sehr mächtige Menschen auf mich aufmerksam wurden. Die Art von Aufmerksamkeit, die man lieber nicht auf sich zieht...
+        </p>
+        <p>
+            Aber gehen wir zurück zum Anfang, dem Tag an dem sich mein Leben auf den Kopf stellte."
+        </p>
+        
+        <h2>1: Lukes Zimmer – 11:00 Uhr</h2>
+
+        <p>
+            Ein 23 Jähriger Mann rollte durch einen ruhigen Flur dessen Luft nach frischem Kaffee und Brot roch. Er trug Brille und ein gebügeltes blaues Hemd mit interessanten Mustern und weißen Manschetten. 
+            Seine Werkzeugtasche war locker über die Rückenlehne seines Rollstuhls geschwungen. 
+        </p>
+        <p>
+            Er öffnete Lukes Zimmertür und erblickte einen Raum der von der Nachmittagssonne in schmalen Streifen durch die halb geschlossenen Jalousien beleuchtet wurde, die Sonne zeichnete helle Linien auf alte Hardware. Staub tanzte in der Luft. Das Zimmer, rund zwanzig Quadratmeter groß, wirkte wie ein Hybrid aus Jugendzimmer und Rechenzentrum.
+        </p>
+        <p>
+            In der Ecke blinkte ein kleiner Server – das Herzstück eines selbstgebauten Intranets. Mehrere ausgemusterte PCs waren notdürftig über Switches, alte Router und kreuz und quer verlegte Ethernetkabel miteinander verbunden.
+        </p>
+        <p>
+            Wer hier barfuß herumlief, spielte Russisch Roulette mit Netzteilen, offenen Steckern und heißgelaufener Hardware. Ein einziger falscher Schritt konnte sowohl den Schmerz eines Legosteins als auch einen Systemabsturz auslösen.
+        </p>
     </div>
-    <div class="card" style="opacity:0.4;">
-      <div class="card-title">Folge.2</div>
-      <div class="card-desc">40?4awd?????fe?aw32j.md</div>
-      <div class="read-time">?? Minuten</div>
-      <span class="soon-btn">erscheint bald</span>
-    </div>
-  </div>
   </body>
 </html>

@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Blue Hood</title>
+  <style>
+    @font-face {
+        font-family: 'HACKED';
+        src: url(HACKED-Regular.ttf);
+    }
+    @font-face {
+        font-family: 'FiraCode';
+        src: url(FiraCode-Regular.ttf);
+    }
+
+    html {
+        font-size: 62.5%; /* 62.5% von 16px (Standard-Browser-Schriftgröße) = 10px */
+        scroll-behavior: smooth;
+    }
+    
+    body {
+        background: #0D1117;
+        color: white;
+        margin: 0;
+        font-family: 'FiraCode', monospace;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+      
+    nav {
+        display: flex;
+        gap: 20px;
+        margin-top: 30px;
+        margin-bottom: 40px; /* Abstand zur Story */
+    }
+
+    .nav-btn {
+        position: relative;
+        font-family: 'FiraCode', monospace;
+        font-size: 20px;
+        background: #2A3039;
+        border: 5px solid #2A3039;
+        color: #fff;
+        padding: 10px 20px;
+        cursor: pointer;
+        border-radius: 25px;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    .nav-btn.active {
+        border: 5px solid #0965ef;
+        box-shadow: #0965ef 0px 2px 30px;
+    }
+
+    .nav-btn:hover {
+        background: #0965ef;
+        border: 5px solid #0965ef;
+        color: #fff;
+        transition: color 0.3s;
+        transform: scale(1.05);
+        box-shadow: #0965ef 0px 2px 30px;
+    }
+
+    .headline {
+        font-size: 80px;
+        margin-top: 60px;
+        margin-bottom: 10px;
+        text-align: center;
+        font-weight: normal;
+        font-family: 'FiraCode', monospace;
+        letter-spacing: 0.1em;
+    }
+
+    .card-row {
+        display: flex;
+        gap: 50px;
+        justify-content: center;
+        margin-top: 90px;
+        margin-bottom: 40px;
+    }
+
+    .card {
+        background: #161B22;
+        border-radius: 50px;
+        padding: 30px 35px;
+        min-height: 335px;
+        max-height: 380px;
+        min-width: 250px;
+        max-width: 300px;
+        box-sizing: border-box;
+        /* box-shadow: 0 0 10px 0 rgba(0,0,0,0.25); */
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        font-family: 'FiraCode', monospace;
+        font-size: 28px;
+        color: #fff;
+        transition: box-shadow 0.3s, border 0.3s;
+        border: none;
+    }
+
+    .card.active {
+        /* border: 3px solid #0965ef;
+        box-shadow: 0 0 40px 10px #0965ef; */
+    }
+
+    .card-title {
+        font-size: 32px;
+        margin-bottom: 20px;
+        letter-spacing: 0.1em;
+        text-align: left;
+    }
+
+    .card-desc {
+        font-size: 24px;
+        margin-bottom: 30px;
+        margin-top: 10px;
+        white-space: pre-line;
+    }
+/* 
+    .read-now {
+      font-family: 'FiraCode', monospace;
+      font-size: 22px;
+      background: #2A3039;
+      color: #fff;
+      padding: 15px 18px 20px 18px;
+      border-radius: 22px;
+      border: 2px solid #0965ef;
+      cursor: pointer;
+      box-shadow: 0 0 20px 0 #0965ef;
+      margin-top: 10px;
+      transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+      text-decoration: none;
+    } */
+
+    .card-btn:hover {
+        background: #0965ef;
+        color: #fff;
+        box-shadow: 0 0 30px 0 #0965ef;
+    }
+
+    .soon-btn {
+        font-family: 'FiraCode', monospace;
+        font-size: 22px;
+        background: #2A3039;
+        border: 5px solid #2A3039;
+        color: #bfc7d5;
+        padding: 15px 25px;
+        border-radius: 22px;
+        border: none;
+        margin-top: 10px;
+        text-decoration: none;
+        display: inline-block;
+        cursor: not-allowed;
+        opacity: 0.8;
+    }
+
+    .read-btn {
+        position: relative;
+        font-family: 'FiraCode', monospace;
+        font-size: 22px;
+        background: #2A3039;
+        color: #fff;
+        padding: 15px 22px;
+        margin-bottom: -20px;
+        cursor: pointer;
+        border-radius: 30px;
+        border: 5px solid #0965ef;
+        text-decoration: none;
+        display: inline-block;
+        box-shadow: #0965ef 0px 2px 30px; /* Leuchten-Effekt */
+    }
+
+    .read-btn:hover {
+        background: #0965ef;
+        color: #fff;
+        transition: background 0.3s, color 0.3s;
+        transform: scale(1.05);
+    }
+
+    p {
+        max-width: 850px;
+        margin-bottom: 80px; /* Abstand zum Button */
+        text-align: left;
+        font-size: 30px;
+    }
+
+    .read-time {
+        font-size: 20px;
+        color: #8b949e;
+        margin-bottom: 20px;
+    }
+
+    #lesen {
+        margin-bottom: 40px;
+        font-size: 30px;
+    }
+
+    summary {
+        outline: none;
+        font-size: 30px;
+        cursor: pointer;
+        color: blue;
+    }
+
+    /* faq Section from hackerstorys code */
+    #faq {
+        text-align: center;
+        padding: 2rem;
+    }
+
+    #faq p.faq-explain {
+        font-size: 2rem;
+        font-weight: 500;
+        margin-bottom: 3rem;
+    }
+
+    #faq p {
+        font-size: 1.6rem;
+        font-weight: 400;
+        margin-bottom: 1rem;
+        margin-left: 1rem;
+    }
+
+    .faq-list {
+        display: flex;
+        flex-direction: column;
+        gap: 2.0rem;
+        margin: 1.5rem auto;
+        max-width: 60.0rem;
+    }
+
+    .faq-item {
+        background-color: #161b22;
+        padding: 1rem;
+        border-radius: 2.5rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease-in-out;
+        position: relative;
+        width: 100%;
+    }
+
+    .faq-item:hover {
+        background-color: #21262D;
+    }
+
+    .faq-question {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        font-size: 1.6rem;
+        font-weight: 400;
+        margin-left: 2rem;
+    }
+
+    .arrow {
+        font-size: 3rem;
+        transition: transform 0.3s ease-in-out;
+        margin-right: 1rem;
+        color: #005BEA;
+    }
+
+    .arrow:hover {
+        transform: scale(1.1);
+    }
+
+    .faq-item.active .arrow {
+        transform: rotate(180deg);
+        background: linear-gradient(90deg, #005BEA, #00C6FB); /* Gradient von Blau zu Türkis */
+        -webkit-background-clip: text; /* Clipped Background für den Text */
+        -webkit-text-fill-color: transparent; /* Text wird transparent, um den Gradient zu zeigen */
+        text-align: center; /* Zentriert den Slogan */
+        background-size: 100%;
+        border-radius: 20px;
+        background-repeat: repeat;
+        background-position: center;
+    }
+
+    .faq-answer {
+        display: none;
+        padding: 1rem;
+        margin-top: 0.5rem;
+        background-color: #161B22;
+        color: #fff;
+        border-radius: 1.6rem;
+        text-align: left;
+    }
+
+    .faq-item.active .faq-answer {
+        display: block;
+    }
+
+    /* Footer */
+    footer {
+        text-align: center;
+        padding: 2rem;
+        margin-top: 5.0rem;
+        background-color: #161B22;
+        border-radius: 1.5rem;
+    }
+
+    .footer-links {
+        margin-top: 1.0rem;
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+    }
+
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html" class="nav-btn">/home</a>
+    <a href="story-lesen.html" class="nav-btn">/story-lesen</a>
+    <a href="whoami.html" class="nav-btn">/whoami</a>
+    <a href="faq.html" class="nav-btn active">/faq</a>
+  </nav>
+  <h1 class="headline">/faq</h1>
+  <section id="faq">
+        <!-- <p class="faq-explain">/faq</p> -->
+        <div class="faq-list">
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Worum geht es in Blue Hood 0rigins?</h3>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Es geht um IT, Freundschaft und den Mut sein Zuhause zu schützen, selbst wenn der Gegner unbesiegbar scheint.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>An welche Zielgruppe ist Blue Hood gerichtet?</h3>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Die Zielgruppe sind junge Erwachsene bis Erwachsene. Themen wie Überwachung, Betrug, digitale Gewalt – und manchmal fallen Schimpfwörter. Keine Horror-Splatter-Gewalt. Ich erzähle eine Geschichte, die für Erwachsene geschrieben ist. Das hier ist kein Kinderbuch, aber mit Humor und Herz geschrieben, damit auch Leute Spaß haben, die nicht so tief in der Tech-Welt stecken wie ich.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Warum ist die erste Staffel kostenlos?</h3>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Ich dachte mir: Das ist gutes Werbematerial, wenn ich am Anfang die Folgen kostenlos rausgebe statt direkt Geld zu verlangen. Mir ist der Community-Aufbau wichtig, und das ist ein guter erster Schritt. Im Internet gilt halt: People love free shit!</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Wie realistisch sind die Hacks?</h3>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>So real wie möglich, aber es sind keine Anleitung für Straftaten. Ich möchte mit echter Technik zeigen was möglich ist.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Gibt es einen Release-Rythmus?</h3>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Ne, kein Fester Takt. Qualität > Quantität. Du kannst meinen Socials, Discord oder auch auf Github folgen.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Darf ich Fanart machen?</h3>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Ja, non-commercial mit Credit („Blue Hood“ + Link). Für kommerzielle Nutzung vorher anfragen.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+<script>
+        const faqItems = document.querySelectorAll('.faq-item');
+
+        faqItems.forEach((item) => {
+            const question = item.querySelector('.faq-question');
+
+            question.addEventListener('click', () => {
+                item.classList.toggle('active'); // Toggle für "active" Klasse
+            });
+        });
+    </script>
+</html>

@@ -6,12 +6,14 @@
   <style>
     @font-face {
         font-family: 'HACKED';
-        src: url(HACKED-Regular.ttf);
+        src: url(HACKED.ttf);
+    }
+    @font-face {
         font-family: 'FiraCode';
         src: url(FiraCode-Regular.ttf);
     }
     body {
-      background: #111;
+      background: #0D1117;
       color: white;
       margin: 0;
       font-family: 'FiraCode', monospace;
@@ -28,26 +30,31 @@
     }
 
     .nav-btn {
-      position: relative;
-      font-family: 'FiraCode', monospace;
-      font-size: 20px;
-      background: #2A3039;
-      color: #fff;
-      padding: 10px 20px;
-      cursor: pointer;
-      border-radius: 25px;
-      border: none;
-      text-decoration: none;
-      display: inline-block;
-      ;
+        position: relative;
+        font-family: 'FiraCode', monospace;
+        font-size: 20px;
+        background: #2A3039;
+        border: 5px solid #2A3039;
+        color: #fff;
+        padding: 10px 20px;
+        cursor: pointer;
+        border-radius: 25px;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    .nav-btn.active {
+        border: 5px solid #0965ef;
+        box-shadow: #0965ef 0px 2px 30px;
     }
 
     .nav-btn:hover {
-      background: #0965ef;
-      color: #fff;
-      transition: color 0.3s;
-      transform: scale(1.05);
-      box-shadow: #0965ef 0px 2px 30px;
+        background: #0965ef;
+        border: 5px solid #0965ef;
+        color: #fff;
+        transition: color 0.3s;
+        transform: scale(1.05);
+        box-shadow: #0965ef 0px 2px 30px;
     }
 
     .read-btn {
@@ -89,7 +96,7 @@
         margin-bottom: 60px;
         text-align: center;
         font-weight: normal;
-        font-family: HACKED, monospace;
+        font-family: 'HACKED', monospace;
         background-image: url('background.png');
         background-size: 100%;
         background-repeat: repeat;
@@ -104,10 +111,10 @@
 </head>
 <body>
   <nav>
-    <a href="index.html" class="nav-btn">/home</a>
+    <a href="index.html" class="nav-btn active">/home</a>
     <a href="story-lesen.html" class="nav-btn">/story-lesen</a>
-    <a href="#" class="nav-btn">/whoami</a>
-    <a href="#" class="nav-btn">/faq</a>
+    <a href="whoami.html" class="nav-btn">/whoami</a>
+    <a href="faq.html" class="nav-btn">/faq</a>
   </nav>
   <h1 class="headline">Blue Hood_Origins</h1>
   <section>
@@ -117,6 +124,6 @@
     </p>
   </section>
 
-  <button class="read-btn" id="lesen"><span></span>>_ kostenlos lesen</button>
+  <a href="story-lesen.html" class="read-btn" id="lesen">>_ kostenlos lesen</a>
 </body>
 </html>
