@@ -2,6 +2,7 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blue Hood</title>
   <style>
     @font-face {
@@ -13,20 +14,21 @@
         src: url(FiraCode-Regular.ttf);
     }
     body {
-      background: #0D1117;
-      color: white;
-      margin: 0;
-      font-family: 'FiraCode', monospace;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+        background: #0D1117;
+        color: white;
+        margin: 0;
+        font-family: 'FiraCode', monospace;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     nav {
-      display: flex;
-      gap: 20px;
-      margin-top: 30px;
-      margin-bottom: 40px; /* Abstand zur Story */
+        display: flex;
+        gap: 30px;
+        margin-top: 30px;
+        margin-bottom: 40px; /* Abstand zur Story */
+        align-items: center;
     }
 
     .nav-btn {
@@ -36,9 +38,10 @@
         background: #2A3039;
         border: 5px solid #2A3039;
         color: #fff;
-        padding: 10px 20px;
+        padding: 15px 25px;
+        margin-left: 20px;
         cursor: pointer;
-        border-radius: 25px;
+        border-radius: 30px;
         text-decoration: none;
         display: inline-block;
     }
@@ -107,14 +110,210 @@
         color: transparent;
     }
 
+      /* ----------- MEDIA QUERIES ----------- */
+      /* Mobile: bis 600px */
+      @media (max-width: 600px) {
+        .headline {
+          font-size: 45px;
+          margin-top: 60px;
+          margin-bottom: 30px;
+        }
+        nav {
+          flex-direction: column;
+          gap: 10px;
+          margin-top: 15px;
+          margin-bottom: 20px;
+        }
+        .nav-btn {
+          font-size: 20px;
+          padding: 15px 20px;
+        }
+        .read-btn {
+          font-size: 16px;
+          padding: 10px 15px;
+          border-radius: 20px;
+        }
+        p {
+          font-size: 20px;
+          margin-bottom: 40px;
+          max-width: 80vw;
+        }
+        #lesen {
+          font-size: 20px;
+          margin-top: 20px;
+          margin-bottom: 20px;
+          padding: 15px 20px;
+          border-radius: 30px;
+        }
+      }
+
+      /* Tablet: 601px bis 1200px */
+      @media (min-width: 601px) and (max-width: 1200px) {
+        .headline {
+          font-size: 80px;
+          margin-top: 40px;
+          margin-bottom: 40px;
+        }
+        nav {
+          gap: 25px;
+          margin-top: 30px;
+          margin-bottom: 30px;
+        }
+        .nav-btn {
+          font-size: 25px;
+          padding: 10px 20px;
+          margin-left: 20px;
+          border-radius: 30px;
+        }
+        .read-btn {
+          font-size: 18px;
+          padding: 12px 18px;
+          border-radius: 28px;
+        }
+        p {
+          font-size: 28px;
+          margin-bottom: 100px;
+          max-width: 70vw;
+        }
+        #lesen {
+          font-size: 30px;
+          margin-bottom: 30px;
+          padding: 20px 30px;
+          border-radius: 40px;
+        }
+      }
+
+    /* Hamburger Menü Styles */
+    .hamburger {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 48px;
+        height: 48px;
+        background: #2A3039;
+        border: none;
+        border-radius: 16px;
+        cursor: pointer;
+        position: fixed;
+        top: 16px;
+        left: 16px;
+        margin-right: 0;
+        box-shadow: 0 2px 16px 0 #0965ef44;
+        z-index: 100;
+        transition: background 0.3s;
+    }
+    .hamburger span {
+        display: block;
+        width: 28px;
+        height: 4px;
+        margin: 4px 0;
+        background: #fff;
+        border-radius: 2px;
+        transition: all 0.3s;
+    }
+    @media (max-width: 600px) {
+      .hamburger {
+        display: flex;
+      }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        position: fixed;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100vw;
+        background: #161B22;
+        padding: 30px 0 20px 0;
+        box-shadow: 0 8px 30px 0 #0965ef44;
+        z-index: 99;
+        align-items: center;
+      }
+      .mode-switch-container {
+        display: flex;
+        align-items: center;
+        margin-left: 20px;
+      }
+      #mode-switch {
+        background: #2A3039;
+        color: #fff;
+        border: none;
+        border-radius: 50%;
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 28px;
+        cursor: pointer;
+        margin-left: 10px;
+        box-shadow: #0965ef 0px 2px 18px;
+        transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+      }
+      #mode-switch:hover {
+        background: #0965ef;
+        color: #fff;
+        box-shadow: #0965ef 0px 2px 30px;
+        transform: scale(1.08);
+      }
+      body.light-mode {
+        background: #f5f7fa;
+        color: #222;
+      }
+      body.light-mode .nav-btn {
+        background: #e0e6ed;
+        color: #222;
+        border-color: #e0e6ed;
+      }
+      body.light-mode .nav-btn.active {
+        border-color: #0965ef;
+        box-shadow: #0965ef 0px 2px 30px;
+      }
+      body.light-mode .nav-btn:hover {
+        background: #0965ef;
+        color: #fff;
+        border-color: #0965ef;
+      }
+      body.light-mode #mode-switch {
+        background: #e0e6ed;
+        color: #222;
+        box-shadow: #0965ef 0px 2px 18px;
+      }
+      body.light-mode #mode-switch:hover {
+        background: #0965ef;
+        color: #fff;
+      }
+      }
+      .nav-links.open {
+        display: flex;
+      }
+      nav {
+        position: static;
+      }
+    }
+
   </style>
 </head>
 <body>
   <nav>
-    <a href="index.html" class="nav-btn active">/home</a>
-    <a href="story-lesen.html" class="nav-btn">/story-lesen</a>
-    <a href="whoami.html" class="nav-btn">/whoami</a>
-    <a href="faq.html" class="nav-btn">/faq</a>
+    <button class="hamburger" aria-label="Menü öffnen" tabindex="0">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <div class="nav-links">
+      <a href="index.html" class="nav-btn active">/home</a>
+      <a href="story-lesen.html" class="nav-btn">/story-lesen</a>
+      <a href="whoami.html" class="nav-btn">/whoami</a>
+      <a href="faq.html" class="nav-btn">/faq</a>
+      <div class="mode-switch-container">
+        <button id="mode-switch" aria-label="Dark/Light Mode" title="Dark/Light Mode">
+          <span id="mode-icon">🌙</span>
+        </button>
+      </div>
+    </div>
   </nav>
   <h1 class="headline">Blue Hood_Origins</h1>
   <section>
@@ -126,4 +325,35 @@
 
   <a href="story-lesen.html" class="read-btn" id="lesen">>_ kostenlos lesen</a>
 </body>
+<script>
+  const hamburger = document.querySelector('.hamburger');
+  const navLinks = document.querySelector('.nav-links');
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+    hamburger.classList.toggle('open');
+  });
+  // Optional: Schließe Menü beim Klick auf Link
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      hamburger.classList.remove('open');
+    });
+  });
+
+  // Dark/Light Mode Switch
+  const switchBtn = document.getElementById('mode-switch');
+  const modeIcon = document.getElementById('mode-icon');
+  const body = document.body;
+  // Load mode from localStorage
+  if (localStorage.getItem('mode') === 'light') {
+    body.classList.add('light-mode');
+    modeIcon.textContent = '☀️';
+  }
+  switchBtn.addEventListener('click', function() {
+    body.classList.toggle('light-mode');
+    const isLight = body.classList.contains('light-mode');
+    modeIcon.textContent = isLight ? '☀️' : '🌙';
+    localStorage.setItem('mode', isLight ? 'light' : 'dark');
+  });
+</script>
 </html>
