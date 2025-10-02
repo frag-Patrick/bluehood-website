@@ -1,71 +1,19 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
     <title>Blue Hood</title>
   <style>
-    @font-face {
-        font-family: 'HACKED';
-        src: url(HACKED.ttf);
-    }
-    @font-face {
-        font-family: 'FiraCode';
-        src: url(FiraCode-Regular.ttf);
-    }
-    body {
-        background: #0D1117;
-        color: white;
-        margin: 0;
-        font-family: 'FiraCode', monospace;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
 
-    nav {
-        display: flex;
-        gap: 30px;
-        margin-top: 30px;
-        margin-bottom: 40px; /* Abstand zur Story */
-        align-items: center;
-    }
-
-    .nav-btn {
-        position: relative;
-        font-family: 'FiraCode', monospace;
-        font-size: 20px;
-        background: #2A3039;
-        border: 5px solid #2A3039;
-        color: #fff;
-        padding: 15px 25px;
-        margin-left: 20px;
-        cursor: pointer;
-        border-radius: 30px;
-        text-decoration: none;
-        display: inline-block;
-    }
-
-    .nav-btn.active {
-        border: 5px solid #0965ef;
-        box-shadow: #0965ef 0px 2px 30px;
-    }
-
-    .nav-btn:hover {
-        background: #0965ef;
-        border: 5px solid #0965ef;
-        color: #fff;
-        transition: color 0.3s;
-        transform: scale(1.05);
-        box-shadow: #0965ef 0px 2px 30px;
-    }
 
     .read-btn {
       position: relative;
       font-family: 'FiraCode', monospace;
       font-size: 20px;
-      background: #2A3039;
-      color: #fff;
+      background: var(--button);
+      color: var(--text);
       padding: 15px 25px;
       cursor: pointer;
       border-radius: 35px;
@@ -77,7 +25,7 @@
 
     .read-btn:hover {
       background: #0965ef;
-      color: #fff;
+      color: var(--text);
       transition: background 0.3s, color 0.3s;
       transform: scale(1.05);
     }
@@ -124,9 +72,10 @@
           margin-top: 15px;
           margin-bottom: 20px;
         }
+     
         .nav-btn {
           font-size: 20px;
-          padding: 15px 20px;
+          padding: 10px 20px;
         }
         .read-btn {
           font-size: 16px;
@@ -147,6 +96,7 @@
         }
       }
 
+      
       /* Tablet: 601px bis 1200px */
       @media (min-width: 601px) and (max-width: 1200px) {
         .headline {
@@ -155,12 +105,12 @@
           margin-bottom: 40px;
         }
         nav {
-          gap: 25px;
+          gap: 10px;
           margin-top: 30px;
           margin-bottom: 30px;
         }
         .nav-btn {
-          font-size: 25px;
+          font-size: 20px;
           padding: 10px 20px;
           margin-left: 20px;
           border-radius: 30px;
@@ -191,7 +141,7 @@
         align-items: center;
         width: 48px;
         height: 48px;
-        background: #2A3039;
+        background: var(--button);
         border: none;
         border-radius: 16px;
         cursor: pointer;
@@ -208,9 +158,67 @@
         width: 28px;
         height: 4px;
         margin: 4px 0;
-        background: #fff;
+        background: var(--text);
         border-radius: 2px;
         transition: all 0.3s;
+    }
+    
+
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:30px;
+    }
+
+    .nav-links.open {
+      display: flex;
+    }
+
+    nav {
+      position: static;
+    }
+
+    .theme-switch {
+      --h: 40px;
+      --w: 72px;
+      --pad: 4px;
+
+      position: relative;
+      width: var(--w);
+      height: var(--h);
+      border-radius: calc(var(--h) / 2);
+      background: linear-gradient(135deg, #7dd3fc, #22c1d4);
+      padding: var(--pad);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+    }
+
+    .theme-switch__knob {
+      width: calc(var(--h) - var(--pad) * 2);
+      height: calc(var(--h) - var(--pad) * 2);
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #ffd27a, #ffb84c);
+      transition: transform 0.3s ease, background 0.3s ease;
+      transform: translateX(0);
+    }
+
+      /* Dark Mode Zustand */
+    .theme-switch.dark {
+      background: #3b3f45;
+    }
+    .theme-switch.dark .theme-switch__knob {
+      background: #f1f5f9;
+      transform: translateX(calc(var(--w) - var(--h)));
+      box-shadow: inset -4px -4px 0px rgba(0,0,0,.15);
+    }
+
+    /* ---------- LIGHT MODE ---------- */
+    body.light-mode {
+      background: #f5f7fa;
+      color: #222;
+      transition: background .25s ease, color .25s ease;
     }
     @media (max-width: 600px) {
       .hamburger {
@@ -225,20 +233,21 @@
         left: 50%;
         transform: translateX(-50%);
         width: 100vw;
-        background: #161B22;
+        background: var(--hamburger-menu-bg);
         padding: 30px 0 20px 0;
         box-shadow: 0 8px 30px 0 #0965ef44;
         z-index: 99;
         align-items: center;
+        border-radius: 0 0 20px 20px;
       }
       .mode-switch-container {
         display: flex;
         align-items: center;
-        margin-left: 20px;
+        margin-bottom: 30px;
       }
       #mode-switch {
-        background: #2A3039;
-        color: #fff;
+        background: var(--button);
+        color: var(--text);
         border: none;
         border-radius: 50%;
         width: 48px;
@@ -254,7 +263,7 @@
       }
       #mode-switch:hover {
         background: #0965ef;
-        color: #fff;
+        color: var(--text);
         box-shadow: #0965ef 0px 2px 30px;
         transform: scale(1.08);
       }
@@ -273,7 +282,7 @@
       }
       body.light-mode .nav-btn:hover {
         background: #0965ef;
-        color: #fff;
+        color: var(--text);
         border-color: #0965ef;
       }
       body.light-mode #mode-switch {
@@ -283,16 +292,44 @@
       }
       body.light-mode #mode-switch:hover {
         background: #0965ef;
-        color: #fff;
-      }
-      }
-      .nav-links.open {
-        display: flex;
-      }
-      nav {
-        position: static;
+        color: var(--text);
       }
     }
+    /* Buttons/Navi im Light-Mode */
+    body.light-mode .nav-btn {
+      background: #e0e6ed;
+      color: #222;
+      border-color: #e0e6ed;
+    }
+    body.light-mode .nav-btn.active {
+      border-color: #5ec9ff;
+      box-shadow: #5ec9ff 0px 2px 30px;
+    }
+    body.light-mode .nav-btn:hover {
+      background: #5ec9ff;
+      color: var(--text);
+      border-color: #5ec9ff;
+    }
+
+    /* Read-Button */
+    body.light-mode .read-btn {
+      background: #e0e6ed;
+      color: #222;
+      border-color: #39ACE7;
+      box-shadow: #39ACE7 0px 5px 60px;
+    }
+    body.light-mode .read-btn:hover {
+      background: #39ACE7;
+      color: var(--text);
+    }
+
+    /* (Optional) Headline – bleibt mit background-clip gut lesbar; kein Change nötig */
+
+    /* Toggle selbst (nur Optik; Funktion kommt per JS unten) */
+    body.light-mode .theme-switch {
+      background: linear-gradient(135deg, #bfe9ff, #7dd3fc);
+    }
+
 
   </style>
 </head>
@@ -309,8 +346,8 @@
       <a href="whoami.html" class="nav-btn">/whoami</a>
       <a href="faq.html" class="nav-btn">/faq</a>
       <div class="mode-switch-container">
-        <button id="mode-switch" aria-label="Dark/Light Mode" title="Dark/Light Mode">
-          <span id="mode-icon">🌙</span>
+        <button id="theme-toggle" class="theme-switch" aria-pressed="false">
+          <span class="theme-switch__knob"></span>
         </button>
       </div>
     </div>
@@ -325,35 +362,5 @@
 
   <a href="story-lesen.html" class="read-btn" id="lesen">>_ kostenlos lesen</a>
 </body>
-<script>
-  const hamburger = document.querySelector('.hamburger');
-  const navLinks = document.querySelector('.nav-links');
-  hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('open');
-    hamburger.classList.toggle('open');
-  });
-  // Optional: Schließe Menü beim Klick auf Link
-  document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-      navLinks.classList.remove('open');
-      hamburger.classList.remove('open');
-    });
-  });
-
-  // Dark/Light Mode Switch
-  const switchBtn = document.getElementById('mode-switch');
-  const modeIcon = document.getElementById('mode-icon');
-  const body = document.body;
-  // Load mode from localStorage
-  if (localStorage.getItem('mode') === 'light') {
-    body.classList.add('light-mode');
-    modeIcon.textContent = '☀️';
-  }
-  switchBtn.addEventListener('click', function() {
-    body.classList.toggle('light-mode');
-    const isLight = body.classList.contains('light-mode');
-    modeIcon.textContent = isLight ? '☀️' : '🌙';
-    localStorage.setItem('mode', isLight ? 'light' : 'dark');
-  });
-</script>
+<script src="script.js"></script>
 </html>

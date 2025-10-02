@@ -1,0 +1,169 @@
+/* Dark Theme default */
+:root{
+    --bg:#0D1117;
+    --text:#ffffff;
+    --button:#2A3039;
+    --hamburger-menu-bg:#161B22;
+    --accent:#0965ef;
+    /* --accent bleibt gleich */
+}
+
+/* ===== Design-Tokens (Light zum überschreiben) ===== */
+
+@media (prefers-color-scheme: light) {
+  :root{
+        --bg:#f5f7fa;
+        --ink:#222222;
+        --button:#e0e6ed;
+        --hamburger-menu-bg:#ffffff;
+      /* --accent:#0965ef; */
+         /* Typo & Spacing */
+        --fs-h1: 10rem;
+        --fs-body: clamp(1.6rem, 1.4vw + .6rem, 2rem);
+        --space-1:.5rem; --space-2:1rem; --space-3:1.5rem; --space-4:2rem;
+
+        /* Radius */
+        --radius-pill: 30px;
+    }
+}
+
+
+/* ===== Base ===== */
+html{ 
+    box-sizing:border-box; 
+    font-size:62.5%; 
+}
+
+*,*::before,*::after{ 
+    box-sizing:inherit; 
+}
+
+body{
+  margin:0; 
+  background:var(--bg); 
+  color:var(--ink);
+  font-family: 'FiraCode', ui-monospace, SFMono-Regular, Menlo, monospace;
+  line-height:1.6; 
+  display:flex; 
+  flex-direction:column; 
+  align-items:center;
+}
+
+a{ 
+    color:inherit; 
+    text-decoration:none; 
+}
+
+img{ 
+    max-width:100%; 
+    height:auto; 
+    display:block; 
+}
+
+/* ===== Layout ===== */
+nav{ 
+    display:flex; 
+    align-items:center; 
+    gap:30px; 
+    margin:30px 0 40px; 
+}
+
+.container{ 
+    width:min(1100px, 92vw); 
+    margin-inline:auto; 
+    padding-inline:var(--space-2); 
+}
+
+/* ===== Komponenten (nutzen Tokens) ===== */
+.headline{
+  font-size: var(--fs-h1);
+  margin: 40px 0;
+  text-align:center; font-weight:400;
+}
+
+.nav-btn{
+    font-size: 2rem;
+    color: var(--ink); 
+    padding: 10px 20px;
+    display:inline-block;
+    background: var(--button);
+    border: 5px solid var(--button);
+    border-radius: var(--radius-pill);
+    transition:.2s transform, .2s background, .2s box-shadow, .2s border-color;
+}
+.nav-btn:hover{
+  background: var(--accent);
+  border-color: var(--accent);
+  color:#fff; transform: scale(1.05);
+  box-shadow: var(--accent) 0 2px 30px;
+}
+.nav-btn.active{
+  border-color: var(--accent);
+  box-shadow: var(--accent) 0 2px 30px;
+}
+
+.read-btn{
+  font-size: 2rem; border-radius: calc(var(--radius-pill) + 5px);
+  background: var(--button); color: var(--ink);
+  padding: 15px 25px; border: 5px solid var(--accent);
+  box-shadow: var(--accent) 0 2px 30px; display:inline-block; transition:.2s transform, .2s background;
+}
+.read-btn:hover{ 
+    background: var(--accent); 
+    color:#fff; 
+    transform: scale(1.05); }
+
+/* Mobile tweaks */
+    @font-face {
+        font-family: 'HACKED';
+        src: url(HACKED.ttf);
+    }
+    @font-face {
+        font-family: 'FiraCode';
+        src: url(/ttf/FiraCode-Regular.ttf);
+    }
+
+    body {
+        background: var(--bg);
+        color: var(--text);
+        margin: 0;
+        font-family: 'FiraCode', monospace;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav {
+        display: flex;
+        gap: 30px;
+        margin-top: 30px;
+        margin-bottom: 40px; /* Abstand zur Story */
+        align-items: center;
+    }
+
+    .nav-btn {
+        position: relative;
+        font-family: 'FiraCode', monospace;
+        font-size: 20px;
+        background: var(--button);
+        border: 5px solid var(--button);
+        color: var(--text);
+        cursor: pointer;
+        border-radius: 30px;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    .nav-btn.active {
+        border: 5px solid #0965ef;
+        box-shadow: #0965ef 0px 2px 30px;
+    }
+
+    .nav-btn:hover {
+        background: #0965ef;
+        border: 5px solid #0965ef;
+        color: var(--text);
+        transition: color 0.3s;
+        transform: scale(1.05);
+        box-shadow: #0965ef 0px 2px 30px;
+    }
