@@ -43,7 +43,7 @@ body {
     align-items: center;
     background: var(--bg);
     color: var(--text);
-    font-family: "HACKED", monospace;
+    font-family: monospace;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
