@@ -22,13 +22,10 @@ body.light-mode {
     --link: #0091f3;
 }
 @font-face {
-    font-family: 'HACKED', monospace;
-    src: url('HACKED.ttf');
+    font-family: 'HACKED';
+    src: url('HACKED.ttf') format('truetype');
 }
-@font-face {
-    font-family: 'Fira Code', monospace;
-    src: url('/ttf/FiraCode-Regular.ttf');
-}
+
 
 /* ====== Base ====== */
 * { 
@@ -46,7 +43,7 @@ body {
     align-items: center;
     background: var(--bg);
     color: var(--text);
-    font-family: "Fira Code", monospace;
+    font-family: "HACKED", monospace;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -92,7 +89,7 @@ img {
 .nav-btn {
     display: inline-flex; 
     align-items: center; 
-    font-family: 'Fira Code', monospace;
+    font-family: monospace;
     font-size: 20px;
     font-weight: 700;
     gap: 8px;
@@ -352,7 +349,7 @@ img {
     color: var(--text);
     text-align: center;
     font-weight: normal;
-    font-family: 'Fira Code', monospace;
+    font-family: monospace;
     letter-spacing: 0.1rem;
 }
 
@@ -363,7 +360,7 @@ p {
     margin: 10px auto 70px auto;
     text-align: left;
     font-weight: 700;
-    font-family: 'Fira Code', monospace;
+    font-family: monospace;
 }
 
 .card-row {
@@ -386,7 +383,7 @@ p {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    font-family: 'Fira Code', monospace;
+    font-family: monospace;
     font-size: 28px;
     color: var(--text);
     border: none;
@@ -413,7 +410,7 @@ p {
 }
 
 .soon-btn {
-    font-family: 'Fira Code', monospace;
+    font-family: monospace;
     font-size: 22px;
     background: var(--bg);
     border: 5px solid var(--button);
@@ -431,7 +428,7 @@ p {
     display: inline-flex; 
     align-items: center; 
     position: relative;
-    font-family: 'Fira Code', monospace;
+    font-family: monospace;
     font-size: 25px;
     font-weight: 700;
     gap: 8px;
@@ -464,7 +461,7 @@ p {
     display: inline-flex; 
     align-items: center; 
     position: relative;
-    font-family: 'Fira Code', monospace;
+    font-family: monospace;
     font-size: 25px;
     font-weight: 700;
     gap: 8px;
@@ -581,7 +578,7 @@ h2 {
     margin-top: 40px;
     margin-bottom: 20px;
     text-align: center;
-    font-family: 'Fira Code', monospace;
+    font-family: monospace;
     letter-spacing: 0.1rem;
 }
 
