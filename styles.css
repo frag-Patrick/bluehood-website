@@ -411,7 +411,7 @@ p {
 
 .soon-btn {
     font-family: monospace;
-    font-size: 22px;
+    font-size: 25px;
     background: var(--bg);
     border: 5px solid var(--button);
     color: var(--text);
@@ -462,7 +462,7 @@ p {
     align-items: center; 
     position: relative;
     font-family: monospace;
-    font-size: 25px;
+    font-size: 28px;
     font-weight: 700;
     gap: 8px;
     padding: 20px 25px; 

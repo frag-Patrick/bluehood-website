@@ -5,8 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Blue Hood – Folge 1</title>
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    #scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 5px;
+      background: linear-gradient(90deg, #0965ef 0%, #00e0ff 100%);
+      z-index: 9999;
+      transition: width 0.2s cubic-bezier(0.4,0,0.2,1);
+    }
+    body {
+      padding-top: 5px;
+    }
+  </style>
 </head>
 <body>
+  <div id="scroll-progress"></div>
   <nav class="site-nav">
     <button class="hamburger" aria-label="Menü öffnen" tabindex="0">
       <span></span><span></span><span></span>
@@ -36,7 +52,15 @@
       <h2>1_Lukes_Zimmer - 11:00</h2>
       
       <p>
-
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil nostrum perspiciatis deleniti architecto sapiente fuga itaque sequi quam, quidem, veniam dolore! Ducimus autem officia minima esse expedita rem alias ab.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat et sequi quis omnis dolorum ut magni. Perspiciatis, aperiam? Consectetur quo sed quisquam debitis deserunt ullam et in autem, quae temporibus.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa officia deserunt inventore atque animi iure rem aperiam, fugiat cumque, perspiciatis corrupti sit, reiciendis enim ea. Iste laudantium optio numquam rerum!
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem minus voluptates cumque, eveniet maxime ipsum eos aut, qui amet in soluta illum aliquam, ex odit tempora dolore quam mollitia dolor.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta voluptates, maxime at est dolorum porro dolores necessitatibus veniam vel? Excepturi enim aperiam tenetur earum dolor omnis necessitatibus placeat nemo commodi?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus assumenda atque cum, sapiente, repellat aperiam dicta deleniti natus architecto laborum iusto tenetur vero! Accusantium quod reprehenderit repellat ipsa amet ex.
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta dignissimos adipisci, perferendis maiores cumque molestias esse impedit laboriosam vitae iste animi accusantium cupiditate culpa, sed dolores veritatis, sapiente libero magni?
       </p>
     </div>
 
@@ -45,5 +69,16 @@
   </footer>
 
   <script src="script.js" defer></script>
+</body>
+<script>
+  // Scroll-Progress-Balken
+  const scrollBar = document.getElementById('scroll-progress');
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const percent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    scrollBar.style.width = percent + '%';
+  });
+</script>
 </body>
 </html>

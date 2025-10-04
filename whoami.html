@@ -6,7 +6,24 @@
   <title>Blue Hood – whoami</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
+ <style>
+    #scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 5px;
+      background: linear-gradient(90deg, #0965ef 0%, #00e0ff 100%);
+      z-index: 9999;
+      transition: width 0.2s cubic-bezier(0.4,0,0.2,1);
+    }
+    body {
+      padding-top: 5px;
+    }
+  </style>
+</head>
 <body>
+  <div id="scroll-progress"></div>
   <nav class="site-nav">
     <button class="hamburger" aria-label="Menü öffnen" tabindex="0">
       <span></span><span></span><span></span>
@@ -41,5 +58,15 @@ Staffel 0 („0rigins“) veröffentliche ich komplett kostenlos in der Hoffnung
   </footer>
 
   <script src="script.js" defer></script>
+  <script>
+  // Scroll-Progress-Balken
+  const scrollBar = document.getElementById('scroll-progress');
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const percent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    scrollBar.style.width = percent + '%';
+  });
+</script>
 </body>
 </html>
