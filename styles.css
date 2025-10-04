@@ -215,24 +215,67 @@ img {
 @media screen and (max-width: 500px) {
   /* index */
     #headline {
-        font-size: 50px;
+        font-size: 40px;
         margin-top: 30px;
     }
     
     section p {
-        font-size: 18px;
-        max-width: 314px;
+        font-size: 16px;
+        max-width: 280px;
+    }
+
+    #lesen {
+        font-size: 20px;
     }
     /* story-lesen */
     #story-lesen-header {
-        font-size: 35px;
+        font-size: 25px;
         margin-top: 30px;
         margin-bottom: 30px;
     }
     #card-row {
-        flex-direction: row; 
+        flex-direction: column; 
         gap: 30px; 
         align-items: center; 
+        margin-top: 25px;
+    }
+    /* folge lesen */
+    #folge-header {
+        font-size: 9px;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    .folge-content p {
+        font-size: 15px;
+        max-width: 330px;
+    }
+    .folge-content h2 {
+        font-size: 20px;
+    }
+
+    /* whoami */
+    #whoami-header {
+        font-size: 55px;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    .content p {
+        font-size: 17px;
+        max-width: 280px;
+    }
+
+    /* faq */
+    #faq-header {
+        font-size: 55px;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    #faq-item {
+        font-size: 15px;
+    }
+    .faq-question h3 { 
+        font-size: 20px;
+        text-align: left;
     }
 }
 
