@@ -23,11 +23,11 @@ body.light-mode {
 }
 @font-face {
     font-family: 'HACKED', monospace;
-    src: url(HACKED.ttf);
+    src: url('HACKED.ttf');
 }
 @font-face {
     font-family: 'Fira Code', monospace;
-    src: url(/ttf/FiraCode-Regular.ttf);
+    src: url('/ttf/FiraCode-Regular.ttf');
 }
 
 /* ====== Base ====== */
