@@ -1,220 +1,48 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blue Hood</title>
-  <style>
-    @font-face {
-        font-family: 'HACKED';
-        src: url(HACKED-Regular.ttf);
-    }
-    @font-face {
-        font-family: 'FiraCode';
-        src: url(FiraCode-Regular.ttf);
-    }
-    body {
-        background: #0D1117;
-        color: white;
-        margin: 0;
-        font-family: 'FiraCode', monospace;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-      
-    nav {
-        display: flex;
-        gap: 30px;
-        margin-top: 30px;
-        margin-bottom: 40px; /* Abstand zur Story */
-    }
-
-    .nav-btn {
-        position: relative;
-        font-family: 'FiraCode', monospace;
-        font-size: 25px;
-        background: #2A3039;
-        border: 5px solid #2A3039;
-        color: #fff;
-        padding: 15px 25px;
-        cursor: pointer;
-        border-radius: 30px;
-        text-decoration: none;
-        display: inline-block;
-    }
-
-    .nav-btn.active {
-        border: 5px solid #0965ef;
-        box-shadow: #0965ef 0px 2px 30px;
-    }
-
-    .nav-btn:hover {
-        background: #0965ef;
-        border: 5px solid #0965ef;
-        color: #fff;
-        transition: color 0.3s;
-        transform: scale(1.05);
-        box-shadow: #0965ef 0px 2px 30px;
-    }
-
-    .headline {
-        font-size: 80px;
-        margin-top: 60px;
-        margin-bottom: 60px;
-        text-align: center;
-        font-weight: normal;
-        font-family: 'FiraCode', monospace;
-        letter-spacing: 0.1em;
-    }
-
-    .card-row {
-        display: flex;
-        gap: 50px;
-        justify-content: center;
-        margin-top: 90px;
-        margin-bottom: 40px;
-    }
-
-    .card {
-        background: #161B22;
-        border-radius: 50px;
-        padding: 30px 35px;
-        min-height: 335px;
-        max-height: 380px;
-        min-width: 250px;
-        max-width: 300px;
-        box-sizing: border-box;
-        /* box-shadow: 0 0 10px 0 rgba(0,0,0,0.25); */
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        font-family: 'FiraCode', monospace;
-        font-size: 28px;
-        color: #fff;
-        transition: box-shadow 0.3s, border 0.3s;
-        border: none;
-    }
-
-    .card.active {
-        /* border: 3px solid #0965ef;
-        box-shadow: 0 0 40px 10px #0965ef; */
-    }
-
-    .card-title {
-        font-size: 32px;
-        margin-bottom: 20px;
-        letter-spacing: 0.1em;
-        text-align: left;
-    }
-
-    .card-desc {
-        font-size: 24px;
-        margin-bottom: 30px;
-        margin-top: 10px;
-        white-space: pre-line;
-    }
-/* 
-    .read-now {
-      font-family: 'FiraCode', monospace;
-      font-size: 22px;
-      background: #2A3039;
-      color: #fff;
-      padding: 15px 18px 20px 18px;
-      border-radius: 22px;
-      border: 2px solid #0965ef;
-      cursor: pointer;
-      box-shadow: 0 0 20px 0 #0965ef;
-      margin-top: 10px;
-      transition: background 0.3s, color 0.3s, box-shadow 0.3s;
-      text-decoration: none;
-    } */
-
-    .card-btn:hover {
-        background: #0965ef;
-        color: #fff;
-        box-shadow: 0 0 30px 0 #0965ef;
-    }
-
-    .soon-btn {
-        font-family: 'FiraCode', monospace;
-        font-size: 22px;
-        background: #2A3039;
-        border: 5px solid #2A3039;
-        color: #bfc7d5;
-        padding: 15px 25px;
-        border-radius: 22px;
-        border: none;
-        margin-top: 10px;
-        text-decoration: none;
-        display: inline-block;
-        cursor: not-allowed;
-        opacity: 0.8;
-    }
-
-    .read-btn {
-        position: relative;
-        font-family: 'FiraCode', monospace;
-        font-size: 22px;
-        background: #2A3039;
-        color: #fff;
-        padding: 15px 22px;
-        margin-bottom: -20px;
-        cursor: pointer;
-        border-radius: 30px;
-        border: 5px solid #0965ef;
-        text-decoration: none;
-        display: inline-block;
-        box-shadow: #0965ef 0px 2px 30px; /* Leuchten-Effekt */
-    }
-
-    .read-btn:hover {
-        background: #0965ef;
-        color: #fff;
-        transition: background 0.3s, color 0.3s;
-        transform: scale(1.05);
-    }
-
-    p {
-        max-width: 850px;
-        margin-bottom: 80px; /* Abstand zum Button */
-        text-align: left;
-        font-size: 30px;
-    }
-
-    .read-time {
-        font-size: 20px;
-        color: #8b949e;
-        margin-bottom: 20px;
-    }
-
-    #lesen {
-        margin-bottom: 40px;
-        font-size: 30px;
-    }
-  </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Blue Hood – Story lesen</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <nav>
-    <a href="index.html" class="nav-btn">/home</a>
-    <a href="story-lesen.html" class="nav-btn active">/story-lesen</a>
-    <a href="whoami.html" class="nav-btn">/whoami</a>
-    <a href="faq.html" class="nav-btn">/faq</a>
+  <nav class="site-nav">
+    <button class="hamburger" aria-label="Menü öffnen" tabindex="0">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links">
+      <a href="index.html" class="nav-btn">/home</a>
+      <a href="story-lesen.html" class="nav-btn">/story-lesen</a>
+      <a href="whoami.html" class="nav-btn">/whoami</a>
+      <a href="faq.html" class="nav-btn">/faq</a>
+      <div class="mode-switch-container">
+        <button id="theme-toggle" class="theme-switch" aria-pressed="false" title="Theme umschalten">
+          <span class="theme-switch__knob"></span>
+        </button>
+      </div>
+    </div>
   </nav>
-  <h1 class="headline">/Staffel_0rigins</h1>
-  <div class="card-row">
+  <h1 class="headerline" id="story-lesen-header">/Staffel_0rigins</h1>
+  <div class="card-row" id="card-row">
     <div class="card active">
       <div class="card-title">Folge.1</div>
       <div class="card-desc">Aller Anfang ist Hackbar.md</div>
       <div class="read-time">40 Minuten Lesezeit</div>
-      <a href="folge1.html" class="read-btn">&gt;_ jetzt lesen</a>
+      <a href="folge1.html" class="read-now">&gt;_ jetzt lesen</a>
     </div>
-    <div class="card" style="opacity:0.4;">
+    <div class="card" style="opacity: 0.4;">
       <div class="card-title">Folge.2</div>
       <div class="card-desc">40?4awd?????fe?aw32j.md</div>
       <div class="read-time">?? Minuten</div>
-      <span class="soon-btn">erscheint bald</span>
+      <span class="soon-btn">> erscheint bald</span>
     </div>
   </div>
-  </body>
+
+  <footer>
+    <div class="container">© <span id="year"></span> Blue Hood | <a class="imprint" href="https://www.mein.online-impressum.de/frag-patrick/">Impressum</a></div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
 </html>

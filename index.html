@@ -1,366 +1,40 @@
-<!DOCTYPE html>
-<html lang="de" data-theme="dark">
+<!doctype html>
+<html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Blue Hood</title>
-  <style>
-
-
-    .read-btn {
-      position: relative;
-      font-family: 'FiraCode', monospace;
-      font-size: 20px;
-      background: var(--button);
-      color: var(--text);
-      padding: 15px 25px;
-      cursor: pointer;
-      border-radius: 35px;
-      border: 5px solid #0965ef;
-      text-decoration: none;
-      display: inline-block;
-      box-shadow: #0965ef 0px 2px 30px; /* Leuchten-Effekt */
-    }
-
-    .read-btn:hover {
-      background: #0965ef;
-      color: var(--text);
-      transition: background 0.3s, color 0.3s;
-      transform: scale(1.05);
-    }
-
-    p {
-      max-width: 850px;
-      margin-bottom: 80px; /* Abstand zum Button */
-      text-align: left;
-      font-size: 30px;
-    }
-
-    #lesen {
-        margin-bottom: 40px;
-        font-size: 30px;
-    }
-    .headline {
-        font-size: 120px;
-        margin-top: 60px;
-        margin-bottom: 60px;
-        text-align: center;
-        font-weight: normal;
-        font-family: 'HACKED', monospace;
-        background-image: url('background.png');
-        background-size: 100%;
-        background-repeat: repeat;
-        background-position: center;
-
-        background-clip: text;
-        -webkit-background-clip: text;
-        color: transparent;
-    }
-
-      /* ----------- MEDIA QUERIES ----------- */
-      /* Mobile: bis 600px */
-      @media (max-width: 600px) {
-        .headline {
-          font-size: 45px;
-          margin-top: 60px;
-          margin-bottom: 30px;
-        }
-        nav {
-          flex-direction: column;
-          gap: 10px;
-          margin-top: 15px;
-          margin-bottom: 20px;
-        }
-     
-        .nav-btn {
-          font-size: 20px;
-          padding: 10px 20px;
-        }
-        .read-btn {
-          font-size: 16px;
-          padding: 10px 15px;
-          border-radius: 20px;
-        }
-        p {
-          font-size: 20px;
-          margin-bottom: 40px;
-          max-width: 80vw;
-        }
-        #lesen {
-          font-size: 20px;
-          margin-top: 20px;
-          margin-bottom: 20px;
-          padding: 15px 20px;
-          border-radius: 30px;
-        }
-      }
-
-      
-      /* Tablet: 601px bis 1200px */
-      @media (min-width: 601px) and (max-width: 1200px) {
-        .headline {
-          font-size: 80px;
-          margin-top: 40px;
-          margin-bottom: 40px;
-        }
-        nav {
-          gap: 10px;
-          margin-top: 30px;
-          margin-bottom: 30px;
-        }
-        .nav-btn {
-          font-size: 20px;
-          padding: 10px 20px;
-          margin-left: 20px;
-          border-radius: 30px;
-        }
-        .read-btn {
-          font-size: 18px;
-          padding: 12px 18px;
-          border-radius: 28px;
-        }
-        p {
-          font-size: 28px;
-          margin-bottom: 100px;
-          max-width: 70vw;
-        }
-        #lesen {
-          font-size: 30px;
-          margin-bottom: 30px;
-          padding: 20px 30px;
-          border-radius: 40px;
-        }
-      }
-
-    /* Hamburger Menü Styles */
-    .hamburger {
-        display: none;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        width: 48px;
-        height: 48px;
-        background: var(--button);
-        border: none;
-        border-radius: 16px;
-        cursor: pointer;
-        position: fixed;
-        top: 16px;
-        left: 16px;
-        margin-right: 0;
-        box-shadow: 0 2px 16px 0 #0965ef44;
-        z-index: 100;
-        transition: background 0.3s;
-    }
-    .hamburger span {
-        display: block;
-        width: 28px;
-        height: 4px;
-        margin: 4px 0;
-        background: var(--text);
-        border-radius: 2px;
-        transition: all 0.3s;
-    }
-    
-
-    .nav-links{
-      display:flex;
-      align-items:center;
-      gap:30px;
-    }
-
-    .nav-links.open {
-      display: flex;
-    }
-
-    nav {
-      position: static;
-    }
-
-    .theme-switch {
-      --h: 40px;
-      --w: 72px;
-      --pad: 4px;
-
-      position: relative;
-      width: var(--w);
-      height: var(--h);
-      border-radius: calc(var(--h) / 2);
-      background: linear-gradient(135deg, #7dd3fc, #22c1d4);
-      padding: var(--pad);
-      border: none;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-    }
-
-    .theme-switch__knob {
-      width: calc(var(--h) - var(--pad) * 2);
-      height: calc(var(--h) - var(--pad) * 2);
-      border-radius: 50%;
-      background: radial-gradient(circle at 35% 35%, #ffd27a, #ffb84c);
-      transition: transform 0.3s ease, background 0.3s ease;
-      transform: translateX(0);
-    }
-
-      /* Dark Mode Zustand */
-    .theme-switch.dark {
-      background: #3b3f45;
-    }
-    .theme-switch.dark .theme-switch__knob {
-      background: #f1f5f9;
-      transform: translateX(calc(var(--w) - var(--h)));
-      box-shadow: inset -4px -4px 0px rgba(0,0,0,.15);
-    }
-
-    /* ---------- LIGHT MODE ---------- */
-    body.light-mode {
-      background: #f5f7fa;
-      color: #222;
-      transition: background .25s ease, color .25s ease;
-    }
-    @media (max-width: 600px) {
-      .hamburger {
-        display: flex;
-      }
-      .nav-links {
-        display: none;
-        flex-direction: column;
-        gap: 10px;
-        position: fixed;
-        top: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 100vw;
-        background: var(--hamburger-menu-bg);
-        padding: 30px 0 20px 0;
-        box-shadow: 0 8px 30px 0 #0965ef44;
-        z-index: 99;
-        align-items: center;
-        border-radius: 0 0 20px 20px;
-      }
-      .mode-switch-container {
-        display: flex;
-        align-items: center;
-        margin-bottom: 30px;
-      }
-      #mode-switch {
-        background: var(--button);
-        color: var(--text);
-        border: none;
-        border-radius: 50%;
-        width: 48px;
-        height: 48px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 28px;
-        cursor: pointer;
-        margin-left: 10px;
-        box-shadow: #0965ef 0px 2px 18px;
-        transition: background 0.3s, color 0.3s, box-shadow 0.3s;
-      }
-      #mode-switch:hover {
-        background: #0965ef;
-        color: var(--text);
-        box-shadow: #0965ef 0px 2px 30px;
-        transform: scale(1.08);
-      }
-      body.light-mode {
-        background: #f5f7fa;
-        color: #222;
-      }
-      body.light-mode .nav-btn {
-        background: #e0e6ed;
-        color: #222;
-        border-color: #e0e6ed;
-      }
-      body.light-mode .nav-btn.active {
-        border-color: #0965ef;
-        box-shadow: #0965ef 0px 2px 30px;
-      }
-      body.light-mode .nav-btn:hover {
-        background: #0965ef;
-        color: var(--text);
-        border-color: #0965ef;
-      }
-      body.light-mode #mode-switch {
-        background: #e0e6ed;
-        color: #222;
-        box-shadow: #0965ef 0px 2px 18px;
-      }
-      body.light-mode #mode-switch:hover {
-        background: #0965ef;
-        color: var(--text);
-      }
-    }
-    /* Buttons/Navi im Light-Mode */
-    body.light-mode .nav-btn {
-      background: #e0e6ed;
-      color: #222;
-      border-color: #e0e6ed;
-    }
-    body.light-mode .nav-btn.active {
-      border-color: #5ec9ff;
-      box-shadow: #5ec9ff 0px 2px 30px;
-    }
-    body.light-mode .nav-btn:hover {
-      background: #5ec9ff;
-      color: var(--text);
-      border-color: #5ec9ff;
-    }
-
-    /* Read-Button */
-    body.light-mode .read-btn {
-      background: #e0e6ed;
-      color: #222;
-      border-color: #39ACE7;
-      box-shadow: #39ACE7 0px 5px 60px;
-    }
-    body.light-mode .read-btn:hover {
-      background: #39ACE7;
-      color: var(--text);
-    }
-
-    /* (Optional) Headline – bleibt mit background-clip gut lesbar; kein Change nötig */
-
-    /* Toggle selbst (nur Optik; Funktion kommt per JS unten) */
-    body.light-mode .theme-switch {
-      background: linear-gradient(135deg, #bfe9ff, #7dd3fc);
-    }
-
-
-  </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blue Hood – Home</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <nav>
+  <nav class="site-nav">
     <button class="hamburger" aria-label="Menü öffnen" tabindex="0">
-      <span></span>
-      <span></span>
-      <span></span>
+      <span></span><span></span><span></span>
     </button>
     <div class="nav-links">
-      <a href="index.html" class="nav-btn active">/home</a>
+      <a href="index.html" class="nav-btn">/home</a>
       <a href="story-lesen.html" class="nav-btn">/story-lesen</a>
       <a href="whoami.html" class="nav-btn">/whoami</a>
       <a href="faq.html" class="nav-btn">/faq</a>
       <div class="mode-switch-container">
-        <button id="theme-toggle" class="theme-switch" aria-pressed="false">
+        <button id="theme-toggle" class="theme-switch" aria-pressed="false" title="Theme umschalten">
           <span class="theme-switch__knob"></span>
         </button>
       </div>
     </div>
   </nav>
-  <h1 class="headline">Blue Hood_Origins</h1>
+  <h1 class="headline" id="headline">Blue Hood_Origins</h1>
   <section>
     <p>
       In Blue Hood Origins kämpfen drei junge Hacker gegen Korruption, Überwachung und digitale Manipulation.<br><br>
       Eine Geschichte über Macht, Freundschaft und den Mut, das Richtige zu tun - näher an unserer Realität, als du denkst.
     </p>
   </section>
+    <a href="story-lesen.html" class="read-free" id="lesen">>_ kostenlos lesen</a>
+  <footer>
+    <div class="container">© <span id="year"></span> Blue Hood | <a class="imprint" href="https://www.mein.online-impressum.de/frag-patrick/">Impressum</a></div>
+  </footer>
 
-  <a href="story-lesen.html" class="read-btn" id="lesen">>_ kostenlos lesen</a>
+  <script src="script.js" defer></script>
 </body>
-<script src="script.js"></script>
 </html>

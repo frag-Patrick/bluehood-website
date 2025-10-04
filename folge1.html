@@ -1,232 +1,49 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Blue Hood</title>
-  <style>
-    @font-face {
-        font-family: 'HACKED';
-        src: url(HACKED-Regular.ttf);
-    }
-    @font-face {
-        font-family: 'FiraCode';
-        src: url(FiraCode-Regular.ttf);
-    }
-
-    
-    body {
-        background: #0D1117;
-        color: white;
-        margin: 0;
-        font-family: 'FiraCode', monospace;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-      
-    nav {
-        display: flex;
-        gap: 20px;
-        margin-top: 30px;
-        margin-bottom: 40px; /* Abstand zur Story */
-    }
-
-    .nav-btn {
-        position: relative;
-        font-family: 'FiraCode', monospace;
-        font-size: 20px;
-        background: #2A3039;
-        border: 5px solid #2A3039;
-        color: #fff;
-        padding: 10px 20px;
-        cursor: pointer;
-        border-radius: 25px;
-        text-decoration: none;
-        display: inline-block;
-    }
-
-    .nav-btn.active {
-        border: 5px solid #0965ef;
-        box-shadow: #0965ef 0px 2px 30px;
-    }
-
-    .nav-btn:hover {
-        background: #0965ef;
-        border: 5px solid #0965ef;
-        color: #fff;
-        transition: color 0.3s;
-        transform: scale(1.05);
-        box-shadow: #0965ef 0px 2px 30px;
-    }
-
-    .headline {
-        font-size: 30px;
-        margin-top: 60px;
-        margin-bottom: 60px;
-        text-align: center;
-        font-weight: normal;
-        font-family: 'FiraCode', monospace;
-        letter-spacing: 0.1em;
-    }
-
-    .card-row {
-        display: flex;
-        gap: 50px;
-        justify-content: center;
-        margin-top: 90px;
-        margin-bottom: 40px;
-    }
-
-    .card {
-        background: #161B22;
-        border-radius: 50px;
-        padding: 30px 35px;
-        min-height: 335px;
-        max-height: 380px;
-        min-width: 250px;
-        max-width: 300px;
-        box-sizing: border-box;
-        /* box-shadow: 0 0 10px 0 rgba(0,0,0,0.25); */
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        font-family: 'FiraCode', monospace;
-        font-size: 28px;
-        color: #fff;
-        transition: box-shadow 0.3s, border 0.3s;
-        border: none;
-    }
-
-    .card.active {
-        /* border: 3px solid #0965ef;
-        box-shadow: 0 0 40px 10px #0965ef; */
-    }
-
-    .card-title {
-        font-size: 32px;
-        margin-bottom: 20px;
-        letter-spacing: 0.1em;
-        text-align: left;
-    }
-
-    .card-desc {
-        font-size: 24px;
-        margin-bottom: 30px;
-        margin-top: 10px;
-        white-space: pre-line;
-    }
-/* 
-    .read-now {
-      font-family: 'FiraCode', monospace;
-      font-size: 22px;
-      background: #2A3039;
-      color: #fff;
-      padding: 15px 18px 20px 18px;
-      border-radius: 22px;
-      border: 2px solid #0965ef;
-      cursor: pointer;
-      box-shadow: 0 0 20px 0 #0965ef;
-      margin-top: 10px;
-      transition: background 0.3s, color 0.3s, box-shadow 0.3s;
-      text-decoration: none;
-    } */
-
-    .card-btn:hover {
-        background: #0965ef;
-        color: #fff;
-        box-shadow: 0 0 30px 0 #0965ef;
-    }
-
-    .soon-btn {
-        font-family: 'FiraCode', monospace;
-        font-size: 22px;
-        background: #2A3039;
-        border: 5px solid #2A3039;
-        color: #bfc7d5;
-        padding: 15px 25px;
-        border-radius: 22px;
-        border: none;
-        margin-top: 10px;
-        text-decoration: none;
-        display: inline-block;
-        cursor: not-allowed;
-        opacity: 0.8;
-    }
-    .content {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-bottom: 80px; /* Abstand zum unteren Rand */
-        padding: 0 20px; /* Padding für kleine Bildschirme */
-    }
-
-    p {
-        max-width: 850px;
-        text-align: left;
-        font-size: 25px;
-        line-height: 1.4;
-    }
-
-    .read-time {
-        font-size: 20px;
-        color: #8b949e;
-        margin-bottom: 20px;
-    }
-
-    #lesen {
-        margin-bottom: 40px;
-        font-size: 30px;
-    }
-    span {
-        color: #087bfe;
-    }
-    h2 {
-        font-size: 35px;
-        margin-top: 40px;
-        margin-bottom: 20px;
-        text-align: center;
-    }
-  </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Blue Hood – Folge 1</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <nav>
-    <a href="index.html" class="nav-btn">/home</a>
-    <a href="story-lesen.html" class="nav-btn active">/story-lesen</a>
-    <a href="whoami.html" class="nav-btn">/whoami</a>
-    <a href="faq.html" class="nav-btn">/faq</a>
-  </nav>
-  <h1 class="headline">/bluehood/0rigins/Folge1_Aller_Anfang_ist_Hackbar.md — <span>read-only</span></h1>
-    <div class="content">
-        <p>
-            "Wenn du das hier liest, hat der Plan entweder geklappt oder irgendwer hat einen Weg in meinen Server und durch mein Labyrinth an Sicherheitsvorkehrungen gefunden. Ich schreibe diese Zeilen, um Struktur in meinen Kopf zu bringen, denn das Chaos, das wir verursacht haben, hat auf einem anderen Level Wellen geschlagen, so das ich mir nicht mal vorstellen konnte.
-        </p>
-        <p>
-            Aber vielleicht sollte ich mich erstmal vorstellen: Hi, Ich bin Luke. Programmierer und der Architekt hinter diesem Chaos.
-        </p>
-        <p>
-            Alles begann, als ich mein Zuhause gegen einen gierigen Großkonzern verteidigen musste, und dabei sehr mächtige Menschen auf mich aufmerksam wurden. Die Art von Aufmerksamkeit, die man lieber nicht auf sich zieht...
-        </p>
-        <p>
-            Aber gehen wir zurück zum Anfang, dem Tag an dem sich mein Leben auf den Kopf stellte."
-        </p>
-        
-        <h2>1: Lukes Zimmer – 11:00 Uhr</h2>
-
-        <p>
-            Ein 23 Jähriger Mann rollte durch einen ruhigen Flur dessen Luft nach frischem Kaffee und Brot roch. Er trug Brille und ein gebügeltes blaues Hemd mit interessanten Mustern und weißen Manschetten. 
-            Seine Werkzeugtasche war locker über die Rückenlehne seines Rollstuhls geschwungen. 
-        </p>
-        <p>
-            Er öffnete Lukes Zimmertür und erblickte einen Raum der von der Nachmittagssonne in schmalen Streifen durch die halb geschlossenen Jalousien beleuchtet wurde, die Sonne zeichnete helle Linien auf alte Hardware. Staub tanzte in der Luft. Das Zimmer, rund zwanzig Quadratmeter groß, wirkte wie ein Hybrid aus Jugendzimmer und Rechenzentrum.
-        </p>
-        <p>
-            In der Ecke blinkte ein kleiner Server – das Herzstück eines selbstgebauten Intranets. Mehrere ausgemusterte PCs waren notdürftig über Switches, alte Router und kreuz und quer verlegte Ethernetkabel miteinander verbunden.
-        </p>
-        <p>
-            Wer hier barfuß herumlief, spielte Russisch Roulette mit Netzteilen, offenen Steckern und heißgelaufener Hardware. Ein einziger falscher Schritt konnte sowohl den Schmerz eines Legosteins als auch einen Systemabsturz auslösen.
-        </p>
+  <nav class="site-nav">
+    <button class="hamburger" aria-label="Menü öffnen" tabindex="0">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links">
+      <a href="index.html" class="nav-btn">/home</a>
+      <a href="story-lesen.html" class="nav-btn">/story-lesen</a>
+      <a href="whoami.html" class="nav-btn">/whoami</a>
+      <a href="faq.html" class="nav-btn">/faq</a>
+      <div class="mode-switch-container">
+        <button id="theme-toggle" class="theme-switch" aria-pressed="false" title="Theme umschalten">
+          <span class="theme-switch__knob"></span>
+        </button>
+      </div>
     </div>
-  </body>
+  </nav>
+  <br>
+  <h1>/bluehood/0rigins/Folge1_Aller_Anfang_ist_Hackbar.md - <span class="read-only">read-only</span></h1>
+    <div class="folge-content">
+      <p>
+        >_ Willkommen zu Blue Hood: 0rigins – Folge 1:
+      </p>
+      <p>
+        
+      </p>
+      
+      <h2>1_Lukes_Zimmer - 11:00</h2>
+      
+      <p>
+
+      </p>
+    </div>
+
+  <footer>
+    <div class="container">© <span id="year"></span> Blue Hood | <a class="imprint" href="https://www.mein.online-impressum.de/frag-patrick/">Impressum</a></div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
 </html>
