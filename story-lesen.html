@@ -5,6 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Blue Hood – Story lesen</title>
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    .blinking-cursor {
+      font-weight: 400;
+      font-size: 1em;
+      animation: blink-cursor 1s steps(1) infinite;
+    }
+    @keyframes blink-cursor {
+      0%, 49% { opacity: 1; }
+      50%, 100% { opacity: 0; }
+    }
+  </style>
 </head>
 <body>
   <nav class="site-nav">
@@ -29,7 +40,7 @@
       <div class="card-title">Folge.1</div>
       <div class="card-desc">Aller Anfang ist Hackbar.md</div>
       <div class="read-time">40 Minuten Lesezeit</div>
-      <a href="folge1.html" class="read-now">&gt;_ jetzt lesen</a>
+      <a href="folge1.html" class="read-now">&gt;<span class="blinking-cursor">_</span> jetzt lesen</a>
     </div>
     <div class="card" style="opacity: 0.4;">
       <div class="card-title">Folge.2</div>

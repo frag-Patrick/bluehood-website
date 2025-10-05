@@ -5,6 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Blue Hood – Home</title>
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    .blinking-cursor {
+      font-weight: 400;
+      font-size: 1em;
+      animation: blink-cursor 1s steps(1) infinite;
+    }
+    @keyframes blink-cursor {
+      0%, 49% { opacity: 1; }
+      50%, 100% { opacity: 0; }
+    }
+  </style>
 </head>
 <body>
   <nav class="site-nav">
@@ -25,12 +36,12 @@
   </nav>
   <h1 class="headline" id="headline">Blue Hood_Origins</h1>
   <section>
-    <p>
+    <p>_
       In Blue Hood Origins kämpfen drei junge Hacker gegen Korruption, Überwachung und digitale Manipulation.<br><br>
       Eine Geschichte über Macht, Freundschaft und den Mut, das Richtige zu tun - näher an unserer Realität, als du denkst.
     </p>
   </section>
-    <a href="story-lesen.html" class="read-free" id="lesen">>_ kostenlos lesen</a>
+    <a href="story-lesen.html" class="read-free" id="lesen">><span class="blinking-cursor">_</span>kostenlos lesen</a>
   <footer>
     <div class="container">© <span id="year"></span> Blue Hood | <a class="imprint" href="https://www.mein.online-impressum.de/frag-patrick/">Impressum</a></div>
   </footer>
