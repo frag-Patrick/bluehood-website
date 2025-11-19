@@ -1,18 +1,18 @@
 /* ====== Design Tokens ====== */
 :root {
-  /* Dark default */
-  --bg: #0d1117;
-  --card: #161b22;
-  --button: #2a3039;
-  --text: #fff;
-  --muted: #9ca3af;
-  --accent: #0965ef;
-  --border: #2a3039;
-  --link: #ffffff;
+    /* Dark default */
+    --bg: #0d1117;
+    --card: #161b22;
+    --button: #2a3039;
+    --text: #fff;
+    --muted: #9ca3af;
+    --accent: #0965ef;
+    --border: #2a3039;
+    --link: #ffffff;
 }
 /* Light mode overrides */
 body.light-mode {
-    --bg: #f8fafc;
+    --bg: #e6e6e6;
     --card: #dde2e9;
     --button: #d1dff0;
     --text: #0f172a;
@@ -59,7 +59,7 @@ img {
     display: block; 
 }
 
-.read-only { 
+.read-blue {
     color: var(--accent);
 }
 
@@ -120,22 +120,22 @@ img {
 
 /* ====== Hamburger (mobile) ====== */
 .hamburger {
-  display: none; 
-  position: relative; 
-  width: 44px; 
-  height: 44px;
-  border: none; 
-  background: var(--bg); 
-  cursor: pointer;
+    display: none; 
+    position: relative; 
+    width: 44px; 
+    height: 44px;
+    border: none; 
+    background: var(--bg); 
+    cursor: pointer;
 }
 
 .hamburger span {
-  position: absolute; 
-  left: 10px; 
-  right: 10px; 
-  height: 2px;
-  background: var(--text); 
-  transition: transform .2s, opacity .2s;
+    position: absolute; 
+    left: 10px; 
+    right: 10px; 
+    height: 2px;
+    background: var(--text); 
+    transition: transform .2s, opacity .2s;
 }
 
 .hamburger span:nth-child(1){ 
@@ -163,51 +163,65 @@ img {
 }
 
 @media (max-width: 800px){
-  .hamburger { 
-    display: block; 
-  }
-  .nav-links {
-    position: fixed; 
-    inset: 56px 12px auto 12px;
-    flex-direction: column; 
-    align-items: stretch; 
-    gap: 10px; 
-    padding: 12px;
-    border: 1px solid var(--border); 
-    background: var(--bg);
-    border-radius: 40px; 
-    transform: translateY(-12px); 
-    opacity: 0; 
-    pointer-events: none;
-    transition: opacity .15s ease, transform .15s ease;
-  }
+    .hamburger {
+        display: block;
+    }
 
-  .nav-links.open { 
-    transform: translateY(0); 
-    opacity: 1; 
-    pointer-events: auto; 
-    margin-top: 30px;
-  }
+    .nav-links {
+        position: fixed;
+        inset: 56px 12px auto 12px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+        padding: 12px;
+        border: 1px solid var(--border);
+        background: var(--bg);
+        border-radius: 40px;
+        transform: translateY(-12px);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity .15s ease, transform .15s ease;
+    }
 
-  /* index */
-  #headline {
-    font-size: 80px;
-    margin-top: 90px;
-  }
+    .nav-links.open {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+        margin-top: 30px;
+    }
 
-  section p {
-    max-width: 650px;
-  }
-  /* story-lesen */
-  #story-lesen-header {
-    font-size: 60px;
-    margin-top: 40px;
-    margin-bottom: 40px;
-  }
+    /* index */
+    #headline {
+        font-size: 80px;
+        margin-top: 90px;
+    }
 
-  #card-row {
-    gap: 20px; 
-  }
+    section p {
+        max-width: 650px;
+    }
+
+    /* story-lesen */
+    #story-lesen-header {
+        font-size: 60px;
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+
+    #card-row {
+        gap: 20px;
+    }
+
+    #folge-header {
+        font-size: 20px;
+        margin-top: 40px;
+        margin-bottom: 40px;
+        font-weight: normal;
+    }
+
+    .folge-content {
+        font-size: 15px;
+        max-width: 550px;
+    }
 }
 
 @media screen and (max-width: 500px) {
@@ -239,13 +253,13 @@ img {
     }
     /* folge lesen */
     #folge-header {
-        font-size: 9px;
+        font-size: 10px;
         margin-top: 30px;
         margin-bottom: 30px;
     }
-    .folge-content p {
+    .folge-content {
         font-size: 15px;
-        max-width: 330px;
+        max-width: 350px;
     }
     .folge-content h2 {
         font-size: 20px;
@@ -267,6 +281,7 @@ img {
         font-size: 55px;
         margin-top: 30px;
         margin-bottom: 30px;
+        font-weight: normal;
     }
     #faq-item {
         font-size: 15px;
@@ -274,6 +289,24 @@ img {
     .faq-question h3 { 
         font-size: 20px;
         text-align: left;
+    }
+}
+
+@media screen and (max-width: 320px) {
+  
+    /* folge lesen */
+    #folge-header {
+        font-size: 8px;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        font-weight: normal;
+    }
+    .folge-content {
+        font-size: 15px;
+        max-width: 280px;
+    }
+    .folge-content h2 {
+        font-size: 20px;
     }
 }
 
@@ -285,25 +318,25 @@ img {
 }
 
 .theme-switch {
-  width: 95px;
-  height: 45px;
-  padding: 2px;
-  box-sizing: border-box;
-  border-radius: 9999px; 
-  border: 1px solid var(--border);
-  background: linear-gradient(135deg, #bfe9ff, #7dd3fc);
-  display: inline-flex; 
-  align-items: center; 
-  cursor: pointer;
+    width: 95px;
+    height: 45px;
+    padding: 2px;
+    box-sizing: border-box;
+    border-radius: 9999px; 
+    border: 1px solid var(--border);
+    background: linear-gradient(135deg, #bfe9ff, #7dd3fc);
+    display: inline-flex; 
+    align-items: center; 
+    cursor: pointer;
 }
 
 .theme-switch__knob {
-  width: 35px;
-  height: 35px;
-  margin-left: 2px;
-  border-radius: 50%; 
-  background: radial-gradient(circle at 35% 35%, #ffd27a, #ffb84c); 
-  transition: transform .15s ease;
+    width: 35px;
+    height: 35px;
+    margin-left: 2px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #ffd27a, #ffb84c);
+    transition: transform .15s ease;
 }
 
 .theme-switch.dark .theme-switch__knob { 
@@ -340,11 +373,12 @@ img {
     margin-top: 60px;
 }
 
-.folge-content {
-    max-width: 850px;
+.folge-content p {
+    max-width: 800px;
     text-align: left;
-    font-size: 25px;
+    font-size: 18px;
     line-height: 1.4;
+    margin: 10px auto 40px auto;
 }
 
 .headerline {
@@ -489,6 +523,14 @@ p {
     transition: background .2s, transform .2s;
     transform: scale(1.05);
 }
+
+.folge-content h2 {
+    font-size: 30px;
+    color: var(--accent);
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
 
 /* faq */
 #faq {
