@@ -29,6 +29,22 @@ function setupThemeToggle(){
   });
 }
 
+ // Scroll-Progress-Balken
+const scrollBar = document.getElementById('scroll-progress');
+window.addEventListener('scroll', () => {
+  const scrollTop = window.scrollY || document.documentElement.scrollTop;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const percent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+  scrollBar.style.width = percent + '%';
+
+  const navLinks = $(".nav-links");
+  const hamburger = $(".hamburger");
+  if (navLinks && hamburger && navLinks.classList.contains("open")) {
+    navLinks.classList.remove("open");
+    hamburger.classList.remove("open");
+  }
+});
+
 function setupHamburger(){
   const hamburger = $(".hamburger");
   const navLinks = $(".nav-links");

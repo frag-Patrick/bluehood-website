@@ -55,17 +55,6 @@ Staffel 0 („0rigins“) veröffentliche ich komplett kostenlos in der Hoffnung
   <footer>
     <div class="container">© <span id="year"></span> 💙 Blue Hood | <span class="fck-nzs">FCK NZS</span> | <a class="imprint" href="https://www.mein.online-impressum.de/frag-patrick/">Impressum</a></div>
   </footer>
-
   <script src="script.js" defer></script>
-  <script>
-  // Scroll-Progress-Balken
-  const scrollBar = document.getElementById('scroll-progress');
-  window.addEventListener('scroll', () => {
-    const scrollTop = window.scrollY || document.documentElement.scrollTop;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const percent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-    scrollBar.style.width = percent + '%';
-  });
-</script>
 </body>
 </html>
