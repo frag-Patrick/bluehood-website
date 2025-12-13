@@ -11,16 +11,17 @@
     --link: #ffffff;
 }
 /* Light mode overrides */
-body.light-mode {
-    --bg: #e6e6e6;
-    --card: #dde2e9;
-    --button: #d1dff0;
+/* body.light-mode {
+    --bg: #E0EBFE;
+    --card: #ffffff;
+    --button: #f1f1f1;
     --text: #0f172a;
-    --muted: #475569;
-    --accent: #0091f3;
-    --border: #d1dff0;
+    --muted: #677b97;
+    --accent: #3ba9f3;
+    --border: #f1f1f1;
     --link: #0091f3;
-}
+} */
+
 @font-face {
     font-family: 'HACKED';
     src: url('HACKED.ttf') format('truetype');
@@ -311,7 +312,7 @@ img {
 }
 
 /* ====== Theme Switch ====== */
-.mode-switch-container { 
+/* .mode-switch-container { 
     display: flex; 
     align-items: center; 
     margin-left: 8px; 
@@ -340,7 +341,6 @@ img {
 }
 
 .theme-switch.dark .theme-switch__knob { 
-    /* 100px (Switch) - 46px (Knob) - 2*2px (Padding) = 50px */
     transform: translateX(50px);
     background: #f1f5f9;
     box-shadow: inset -4px -4px 0px rgba(0, 0, 0, .15); 
@@ -349,7 +349,7 @@ img {
 .theme-switch.dark { 
     background: var(--button); 
     border-color: var(--border);
-}
+} */
 
 /* ====== Content helpers ====== */
 .headline {
@@ -367,6 +367,24 @@ img {
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
+}
+
+.welcome-header {
+    font-size: 100px;
+    margin-top: 80px;
+    margin-bottom: 40px;
+    text-align: center;
+    font-weight: normal;
+    font-family: 'HACKED', monospace;
+    background-image: url('background.png');
+    background-size: 100%;
+    background-repeat: repeat;
+    background-position: center;
+    
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    letter-spacing: 0.1rem;
 }
 
 #folge-header {
@@ -648,7 +666,91 @@ footer .imprint:hover {
     color: var(--accent);
 }
 
+.fck-nzs {
+    color: #d33bb7;
+}
+
 .toc { 
     position: sticky; 
     top: 72px; 
+}
+
+
+
+/* .bh-endbox {
+    font-family: sans-serif;
+    text-align: center;
+    padding: 40px 40px;
+    margin: 20px auto 40px;
+    max-width: 800px;
+    background: var(--card);
+    border-radius: 40px;
+}
+
+.bh-endbox h2 {
+    font-size: 2rem;
+    margin-top: -10px;
+    margin-bottom: 30px;
+    color: var(--text);
+    font-weight: 700;
+}
+
+.bh-endbox-text {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--text);
+    margin-bottom: 32px;
+    text-align: center;
+}
+
+.bh-endbox-btn {
+    display: inline-flex; 
+    align-items: center; 
+    position: relative;
+    font-family: monospace;
+    font-size: 1.2rem;
+    font-weight: 700;
+    gap: 8px;
+    padding: 20px 25px 24px 25px; 
+    background: var(--accent);
+    border: 5px solid var(--accent);
+    border-radius: 35px;  
+    color: var(--text);
+    text-decoration: none; 
+    margin: 0 auto 10px auto;
+}
+
+.bh-endbox-btn:hover {
+    border-color: var(--accent);
+    background: var(--accent);
+    box-shadow: #0965ef 0px 2px 30px;
+    color: var(--text);
+    transition: background .2s, transform .2s;
+    transform: scale(1.05);
+}
+
+.bh-endbox-hint {
+    margin-top: 22px;
+    margin-bottom: 0;
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.4;
+    text-align: center;
+} */
+
+.sib-form input[type="text"],
+.sib-form input[type="email"],
+.sib-form input[type="tel"],
+.sib-form textarea {
+  background-color: #05070a !important; /* passend zu deinem Darkmode */
+  color: #f5f5f5 !important;
+  border: 1px solid #444 !important;
+  padding: 5px !important;
+  padding-left: 15px !important;
+  border-radius: 14px !important;
+}
+
+.sib-form input::placeholder,
+.sib-form textarea::placeholder {
+  color: #888888 !important;
 }

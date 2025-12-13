@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/png" href="bluehood-logo.png" />
   <title>Blue Hood – whoami</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -29,13 +30,13 @@
     <div class="nav-links">
       <a href="index.html" class="nav-btn">/home</a>
       <a href="story-lesen.html" class="nav-btn">/story-lesen</a>
-      <a href="whoami.html" class="nav-btn">/whoami</a>
+      <a href="whoami.html" class="nav-btn active">/whoami</a>
       <a href="faq.html" class="nav-btn">/faq</a>
-      <div class="mode-switch-container">
+      <!-- <div class="mode-switch-container">
         <button id="theme-toggle" class="theme-switch" aria-pressed="false" title="Theme umschalten">
           <span class="theme-switch__knob"></span>
         </button>
-      </div>
+      </div> -->
     </div>
   </nav>
   <h1 class="headerline" id="whoami-header">/whoami?</h1>
@@ -52,19 +53,8 @@ Staffel 0 („0rigins“) veröffentliche ich komplett kostenlos in der Hoffnung
     </div>
 
   <footer>
-    <div class="container">© <span id="year"></span> Blue Hood | <a class="imprint" href="https://www.mein.online-impressum.de/frag-patrick/">Impressum</a></div>
+    <div class="container">© <span id="year"></span> 💙 Blue Hood | <span class="fck-nzs">FCK NZS</span> | <a class="imprint" href="https://www.mein.online-impressum.de/frag-patrick/">Impressum</a></div>
   </footer>
-
   <script src="script.js" defer></script>
-  <script>
-  // Scroll-Progress-Balken
-  const scrollBar = document.getElementById('scroll-progress');
-  window.addEventListener('scroll', () => {
-    const scrollTop = window.scrollY || document.documentElement.scrollTop;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const percent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-    scrollBar.style.width = percent + '%';
-  });
-</script>
 </body>
 </html>
