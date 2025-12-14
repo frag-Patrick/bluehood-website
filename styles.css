@@ -232,6 +232,10 @@ img {
         margin-top: 30px;
     }
     
+    .index-text {
+        margin-bottom: -30px;
+    }
+
     section p {
         font-size: 16px;
         max-width: 280px;
@@ -354,7 +358,7 @@ img {
 /* ====== Content helpers ====== */
 .headline {
     font-size: 120px;
-    margin-top: 100px;
+    margin-top: 50px;
     margin-bottom: 50px;
     text-align: center;
     font-weight: normal;
@@ -425,7 +429,7 @@ p {
     display: flex; 
     gap: 50px; 
     justify-content: center;
-    margin-top: 90px;
+    margin-top: 40px;
     margin-bottom: 40px;
 }
 
