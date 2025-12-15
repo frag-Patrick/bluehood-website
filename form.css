@@ -2274,6 +2274,15 @@ http://nicolasgallagher.com/micro-clearfix-hack/
 }
 
 @media screen and (max-width: 480px) {
+    .sib-form {
+        width: 400px;
+    }
+    
+    #news-headline {
+        font-size: 45px;
+        margin-top: 0;
+    }
+
     .sib-popup .sib-sms-select {
         display: block
     }
@@ -2378,6 +2387,14 @@ http://nicolasgallagher.com/micro-clearfix-hack/
     .sib-form__declaration p {
         margin-top: 30px;
         margin-bottom: 0px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    
+    #news-headline {
+        font-size: 35px;
+        margin-top: 0;
     }
 }
 
