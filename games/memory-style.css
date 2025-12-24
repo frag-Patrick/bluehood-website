@@ -12,22 +12,20 @@ body {
 
 .memory-game {
   width: 700px;
-  height: 700px;
   margin: auto;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 240px;
+  gap: 26px; /* 🎉 beliebig groß */
   perspective: 1000px;
 }
 
 .memory-card {
-  width: calc(25% - 10px);
-  height: calc(33.333% - 10px);
-  margin: 5px;
+  width: 100%;
+  height: 100%;
   position: relative;
-  transform: scale(1);
   transform-style: preserve-3d;
   transition: transform .5s;
-  box-shadow: 1px 1px 1px rgba(0,0,0,.3);
 }
 
 .memory-card:active {
