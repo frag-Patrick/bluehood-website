@@ -191,6 +191,7 @@ img {
         margin-top: 30px;
     }
 
+
     /* index */
     #headline {
         font-size: 80px;
@@ -223,6 +224,13 @@ img {
         font-size: 15px;
         max-width: 550px;
     }
+}
+
+@media screen and (max-width: 800px) {    
+    .welcome-episode-title p {
+        font-size: 16px;
+    }
+
 }
 
 @media screen and (max-width: 500px) {
