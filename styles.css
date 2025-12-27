@@ -273,6 +273,7 @@ img {
     .folge-content {
         font-size: 15px;
         max-width: 350px;
+        margin: auto;
     }
     .folge-content h2 {
         font-size: 20px;
@@ -316,7 +317,8 @@ img {
     }
     .folge-content {
         font-size: 15px;
-        max-width: 280px;
+        max-width: 290px;
+        margin: auto;
     }
     .folge-content h2 {
         font-size: 20px;
@@ -424,7 +426,7 @@ img {
 .folge-content p {
     max-width: 800px;
     text-align: left;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 1.4;
     margin: 10px auto 40px auto;
 }
@@ -575,20 +577,23 @@ p {
 .folge-content h2 {
     font-size: 30px;
     color: var(--accent);
-    margin-top: 50px;
-    margin-bottom: 50px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    background-color: var(--bg);
+    padding: 20px;
+    border-radius: 35px;
 }
 
 .folge-content {
     background-color: #161b22;
     width: 800px;
-    padding: 20px 40px 40px 40px;
+    padding: 20px 20px 10px 20px;
     margin-top: 40px;
     border-radius: 40px;
 }
 
 .welcome-episode-title p {
-    font-size: 23px;
+    font-size: 20px;
 }
 
 /* faq */
