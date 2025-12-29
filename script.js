@@ -59,12 +59,38 @@ function setupHamburger(){
   }));
 }
 
+// Close hamburger when user clicks/touches outside the menu
+function setupCloseHamburgerOnOutsideClick(){
+  const hamburger = document.querySelector('.hamburger');
+  const navLinks = document.querySelector('.nav-links');
+  if (!hamburger || !navLinks) return;
+
+  function closeMenu(){
+    if (navLinks.classList.contains('open')){
+      navLinks.classList.remove('open');
+      hamburger.classList.remove('open');
+    }
+  }
+
+  // click outside
+  document.addEventListener('click', (e) => {
+    if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) closeMenu();
+  });
+
+  // touchstart for mobile
+  document.addEventListener('touchstart', (e) => {
+    if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) closeMenu();
+  }, { passive: true });
+}
+
 function markActiveLink(){
   const here = location.pathname.split("/").pop() || "index.html";
   $all(".nav-links a").forEach(a => {
     if (a.getAttribute("href") === here) a.classList.add("active");
   });
 }
+
+// /more+ behaviour removed
 
 function setYear(){
   const y = $("#year");
@@ -76,6 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupThemeToggle();
   markActiveLink();
   setYear();
+  setupCloseHamburgerOnOutsideClick();
 });
 
 const faqItems = document.querySelectorAll('.faq-item');

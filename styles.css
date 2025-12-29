@@ -96,6 +96,7 @@ img {
     font-weight: 700;
     gap: 8px;
     padding: 15px 20px; 
+    margin-bottom: 15px;
     background: var(--button);
     border: 5px solid var(--border);
     border-radius: 30px; 
@@ -117,6 +118,47 @@ img {
     box-shadow: #0091f3 0px 2px 30px;
     transition: background .2s, transform .2s;
     transform: scale(1.05);
+}
+
+/* /more+ dropdown styles */
+.more-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.more-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.more-menu {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    left: -4px;
+    min-width: 180px;
+    background: #161b22;
+    border-radius: 40px;
+    padding: 15px 5px 0px 15px;
+    box-shadow: 0 6px 24px rgba(9,101,239,0.12);
+    display: none;
+    z-index: 50;
+}
+
+.more-menu.open { display: block; }
+.more-menu .more-item {
+    display: block;
+    padding: 10px 14px;
+    color: #fff;
+    text-decoration: none;
+    font-family: 'FiraCode', monospace;
+    border-radius: 8px;
+}
+
+.more-menu .more-item:hover {
+    background: #0965ef;
+    color: #fff;
 }
 
 /* ====== Hamburger (mobile) ====== */
