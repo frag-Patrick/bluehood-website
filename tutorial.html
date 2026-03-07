@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="bluehood-logo.png" />
+  <title>Blue Hood – Team kennenlernen</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="ep-game-page">
+
+  <nav class="site-nav">
+    <button class="hamburger" aria-label="Menü öffnen" tabindex="0">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links">
+      <a href="index.html" class="nav-btn">/home</a>
+      <a href="story.html" class="nav-btn">/story</a>
+      <a href="news.html" class="nav-btn">/news</a>
+      <a href="whoami.html" class="nav-btn">/whoami</a>
+      <a href="faq.html" class="nav-btn">/faq</a>
+      <a href="fall-hub.html" class="nav-btn">/play</a>
+    </div>
+  </nav>
+
+  <div class="ep-case-header">
+    <a href="fall-hub.html" class="ep-back-link">← Fälle</a>
+    <div class="ep-case-header-title">
+      <div class="ep-case-header-logo">BLUE_HOOD</div>
+      <div class="ep-case-badge">TEAM-BRIEFING</div>
+    </div>
+    <button id="sidebarToggleBtn" class="ep-sidebar-toggle-btn">📋<span class="ep-btn-label"> Fall-Infos</span></button>
+    <div class="ep-live-dot"></div>
+  </div>
+
+  <div class="ep-game-wrapper">
+
+    <!-- Sidebar -->
+    <aside class="ep-sidebar">
+
+      <div class="ep-sidebar-block">
+        <h3>Aktiver Fall</h3>
+        <div class="ep-case-title-big"><span class="read-blue" style="font-weight: bold;">//</span> Team-Briefing</div>
+        <div class="ep-case-subtitle">Lern das Team kennen, bevor es losgeht. Stell so viele Fragen du willst.</div>
+      </div>
+
+      <div class="ep-sidebar-block">
+        <h3>Hinweis</h3>
+        <div style="font-size:13px; color:var(--muted); line-height:1.6;">
+          Du kannst mehrere Fragen stellen – in beliebiger Reihenfolge.
+          Wenn du bereit bist, klick auf „Los geht's".
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- Chat -->
+    <div class="ep-chat-wrap">
+      <div class="ep-msgs-container">
+        <div class="ep-messages" id="msgs"></div>
+        <button id="newMsgBtn" class="ep-new-msg-btn">Neue Nachricht ↓</button>
+      </div>
+      <div class="ep-choice-area" id="choiceArea">
+        <div class="ep-choice-label">// DEINE FRAGE</div>
+        <div class="ep-choice-grid" id="choiceGrid"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="container">© 2025 - <span id="year"></span> 💙 Blue Hood | <span class="fck-nzs">FCK NZS</span> | <a class="imprint" href="https://www.mein.online-impressum.de/frag-patrick/">Impressum</a></div>
+  </footer>
+
+  <div id="sidebarBackdrop" class="ep-sidebar-backdrop"></div>
+  <script src="script.js" defer></script>
+  <script src="ep-utils.js" defer></script>
+  <script src="tutorial.js" defer></script>
+</body>
+</html>

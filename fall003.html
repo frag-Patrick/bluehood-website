@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="bluehood-logo.png" />
+  <title>Blue Hood – Fall #003: Willkommen, Admin</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="ep-game-page">
+
+  <nav class="site-nav">
+    <button class="hamburger" aria-label="Menü öffnen" tabindex="0">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links">
+      <a href="index.html" class="nav-btn">/home</a>
+      <a href="story.html" class="nav-btn">/story</a>
+      <a href="news.html" class="nav-btn">/news</a>
+      <a href="whoami.html" class="nav-btn">/whoami</a>
+      <a href="faq.html" class="nav-btn">/faq</a>
+      <a href="fall-hub.html" class="nav-btn">/play</a>
+    </div>
+  </nav>
+
+  <div class="ep-case-header">
+    <a href="fall-hub.html" class="ep-back-link">← Fälle</a>
+    <div class="ep-case-header-title">
+      <div class="ep-case-header-logo">BLUE_HOOD</div>
+      <div class="ep-case-badge">Willkommen, Admin</div>
+    </div>
+    <button id="sidebarToggleBtn" class="ep-sidebar-toggle-btn">📋<span class="ep-btn-label"> Fall-Infos</span></button>
+    <div class="ep-live-dot"></div>
+  </div>
+
+  <div class="ep-game-wrapper">
+
+    <!-- Sidebar -->
+    <aside class="ep-sidebar">
+
+      <div class="ep-sidebar-block">
+        <h3>Aktiver Fall</h3>
+        <div class="ep-case-title-big">// Willkommen, Admin</div>
+        <div class="ep-case-subtitle">Bambus Online hat 40 Router in Bitstedt installiert. Passwort auf allen: admin/admin.</div>
+      </div>
+
+      <div class="ep-sidebar-block">
+        <h3>Hinweise</h3>
+        <div class="ep-clue-item" id="c0"><div class="ep-clue-check">[ ]</div><div>Default-Zugangsdaten bestätigt</div></div>
+        <div class="ep-clue-item" id="c1"><div class="ep-clue-check">[ ]</div><div>Netzwerkausmaß kartiert</div></div>
+        <div class="ep-clue-item" id="c2"><div class="ep-clue-check">[ ]</div><div>Angriffsvektoren analysiert</div></div>
+        <div class="ep-clue-item" id="c3"><div class="ep-clue-check">[ ]</div><div>Verantwortlichkeit geklärt</div></div>
+      </div>
+
+      <div class="ep-sidebar-block">
+        <h3>Fortschritt</h3>
+        <div class="ep-progress-track">
+          <div class="ep-progress-bar" id="progBar" style="width:0%"></div>
+        </div>
+        <div class="ep-progress-label" id="progLabel">0 / 4 Hinweise</div>
+      </div>
+
+      <div class="ep-sidebar-block">
+        <h3>Schwierigkeit</h3>
+        <div style="font-size:13px; color:var(--ep-easy);">● Einsteiger</div>
+        <div style="font-size:12px; color:var(--muted); margin-top:4px;">Kein Vorwissen nötig</div>
+      </div>
+
+    </aside>
+
+    <!-- Chat -->
+    <div class="ep-chat-wrap">
+      <div class="ep-msgs-container">
+        <div class="ep-messages" id="msgs"></div>
+        <button id="newMsgBtn" class="ep-new-msg-btn">Neue Nachricht ↓</button>
+      </div>
+      <div class="ep-choice-area" id="choiceArea">
+        <div class="ep-choice-label">// DEINE AKTION</div>
+        <div class="ep-choice-grid" id="choiceGrid"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="container">© 2025 - <span id="year"></span> 💙 Blue Hood | <span class="fck-nzs">FCK NZS</span> | <a class="imprint" href="https://www.mein.online-impressum.de/frag-patrick/">Impressum</a></div>
+  </footer>
+
+  <div id="sidebarBackdrop" class="ep-sidebar-backdrop"></div>
+  <script src="script.js" defer></script>
+  <script src="ep-utils.js" defer></script>
+  <script src="fall003.js" defer></script>
+</body>
+</html>
