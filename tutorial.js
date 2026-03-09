@@ -211,7 +211,7 @@ async function showEnd() {
     <h2>// BEREIT</h2>
     <p>Du kennst das Team. Du weißt wie es läuft.</p>
     <p>Jetzt wähle deinen ersten Fall.</p>
-    <a href="faelle.html" class="ep-restart-btn">→ Zu den Fällen</a>
+    <a href="play.html" class="ep-restart-btn">→ Zu den Fällen</a>
   `;
   msgsEl.appendChild(card);
   if (userAtBottom) msgsEl.scrollTop = msgsEl.scrollHeight; else newMsgBtn.classList.add('visible');

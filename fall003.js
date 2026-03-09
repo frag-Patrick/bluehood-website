@@ -401,7 +401,7 @@ async function showEnd() {
     <p style="margin-top:12px; color:var(--muted); font-size:12px;">${n}/4 Hinweise · Fall #003 · Einsteiger</p>
     <p style="margin-top:16px; font-size:13px; color:var(--muted);">Trag dich in den Newsletter ein für neue Folgen.</p>
     <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:8px;">
-      <a href="faelle.html" class="ep-restart-btn">← Zurück zu den Fällen</a>
+      <a href="play.html" class="ep-restart-btn">← Zurück zu den Fällen</a>
       <a href="news.html" class="ep-restart-btn">Newsletter →</a>
     </div>
   `;
