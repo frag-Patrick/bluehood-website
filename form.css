@@ -2279,7 +2279,7 @@ http://nicolasgallagher.com/micro-clearfix-hack/
     }
     
     #news-headline {
-        font-size: 45px;
+        font-size: 35px;
         margin-top: 0;
     }
 
@@ -2393,7 +2393,7 @@ http://nicolasgallagher.com/micro-clearfix-hack/
 @media screen and (max-width: 320px) {
     
     #news-headline {
-        font-size: 35px;
+        font-size: 30px;
         margin-top: 0;
     }
 }
@@ -2453,7 +2453,7 @@ http://nicolasgallagher.com/micro-clearfix-hack/
     margin: 0 auto;
     padding: 17px;
     display: inline-block;
-    width: 100%
+    width: 85%
 }
 
 #sib-form {
@@ -3050,7 +3050,6 @@ textarea.input {
 @media screen and (max-width: 400px) {
     #sib-container {
         padding: 32px 0px 32px;
-        
     }
 }
 

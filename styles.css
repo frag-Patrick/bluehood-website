@@ -72,8 +72,8 @@ img {
 
 /* ====== Navbar ====== */
 .site-nav {
-    top: 0; 
-    z-index: 50; 
+    top: 0;
+    z-index: 150;
     display: flex; 
     align-items: center; 
     background: var(--bg);
@@ -424,7 +424,7 @@ img {
 }
 
 #news-headline {
-    font-size: 90px;
+    font-size: 75px;
     line-height: 1;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -466,7 +466,7 @@ img {
 .folge-content p {
     max-width: 800px;
     text-align: left;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 1.4;
     margin: 10px auto 40px auto;
 }
@@ -745,6 +745,24 @@ h2 {
   padding-bottom: 70px;
 }
 
+/* Rail-Abstand für den Content auf schmalen Viewports */
+@media (max-width: 900px) {
+  .fol-reader-wrap {
+    align-self: stretch;
+    width: auto;
+    margin-left: 52px;
+    margin-right: 10px;
+  }
+  .fol-reader-wrap .folge-content {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    margin: 0 auto;
+  }
+}
+
+
+
 .fol-rail {
   position: fixed;
   left: 15px;
@@ -893,9 +911,37 @@ h2 {
 }
 .fol-toast.show { opacity: 1; }
 
-@media (max-width: 860px) {
+@media (max-width: 900px) {
   .fol-bm-bar { gap: 6px; padding: 8px 10px; }
   .fol-bm-btn { font-size: 11px; padding: 6px 10px; }
+}
+
+/* Mobile: Rail verkleinern */
+@media (max-width: 600px) {
+  .fol-rail {
+    left: 6px;
+    width: 18px;
+  }
+  .fol-seg {
+    width: 12px;
+  }
+  .fol-cursor {
+    width: 25px;
+    height: 20px;
+    border-width: 3px;
+  }
+  .fol-bm-marker {
+    width: 20px;
+    height: 20px;
+    border-width: 3px;
+  }
+  .fol-reader-wrap {
+    margin-left: 32px;
+  }
+  .fol-bm-marker.active {
+    width: 35px;
+    height: 50px;
+  }
 }
 
 /* Footer */
