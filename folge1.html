@@ -20,7 +20,7 @@
   </style>
 </head>
 <body>
-  <div id="scroll-progress"></div>
+  
   <nav class="site-nav">
     <button class="hamburger" aria-label="Menü öffnen" tabindex="0">
       <span></span><span></span><span></span>
@@ -40,6 +40,10 @@
     </div>
   </nav>
   <!-- <h1 id="folge-header">/bluehood/0rigins/Folge1_Aller_Anfang_ist_Hackbar.md - <span class="read-blue">read-only</span></h1> -->
+  <div class="fol-reader-wrap">
+    <div class="fol-rail" id="folRail">
+      <div class="fol-cursor" id="folCursor"></div>
+    </div>
     <div class="folge-content">
       <div class="welcome-episode-title"><p><span class="read-blue" style="font-weight: bold;">&gt;_</span> Willkommen zu Blue-Hood_0rigins – Folge 1:</p></div>
       <h2>Prolog</h2>
@@ -707,6 +711,14 @@
       <p>Für einen Moment war es still am Tisch, nur das Brummen der Espressomaschine füllte die Leere. Doch in dieser Stille wurde etwas geboren: ein unausgesprochenes Versprechen, dass sie nicht tatenlos zusehen würden.</p>
       <p>Ende von Folge 1</p>
     </div>
+  </div>
+  <div class="fol-bm-bar" id="folBmBar">
+    <button class="fol-bm-btn fol-bm-set" id="folBmSet">+ Lesezeichen</button>
+    <button class="fol-bm-btn fol-bm-del" id="folBmDel">✕ Löschen</button>
+    <button class="fol-bm-btn fol-bm-nav" id="folBmPrev">▲ Vorheriges</button>
+    <button class="fol-bm-btn fol-bm-nav" id="folBmNext">▼ Nächstes</button>
+  </div>
+  <div class="fol-toast" id="folToast"></div>
     <!-- Begin Brevo Form -->
 <!-- START - We recommend to place the below code in head tag of your website html  -->
 <style>
@@ -996,9 +1008,8 @@
 
 
   <footer>
-    <div class="container">© 2025 - <span id="year"></span> 💙 Blue Hood | <span class="fck-nzs">FCK NZS</span> | <a class="imprint" href="https://www.mein.online-impressum.de/frag-patrick/">Impressum</a></div>
+    <div id="folge-footer-space" class="container">© 2025 - <span id="year"></span> 💙 Blue Hood - hackerstorys mit Herz und Haltung | <a class="fck-nzs" href="fck-nzs.html">FCK NZS</a> | <a class="imprint" href="https://www.mein.online-impressum.de/frag-patrick/">Impressum</a></div>
   </footer>
-
   <script src="script.js" defer></script>
 </body>
 <style>

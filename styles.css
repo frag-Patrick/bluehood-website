@@ -471,6 +471,10 @@ img {
     margin: 10px auto 40px auto;
 }
 
+#folge-footer-space {
+    margin-bottom: 80px;
+}
+
 .headerline {
     font-size: 80px;
     margin-top: 60px;
@@ -733,8 +737,169 @@ h2 {
     letter-spacing: 0.1rem;
 }
 
+/* === Folge Reader: Rail & Lesezeichen === */
+:root { --rail-empty: #1e2130; }
+
+.fol-reader-wrap {
+  width: 800px;
+  padding-bottom: 70px;
+}
+
+.fol-rail {
+  position: fixed;
+  left: 15px;
+  top: 20px;
+  bottom: 100px;
+  width: 28px;
+  z-index: 100;
+}
+
+.fol-seg {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 17px;
+  border-radius: 50px;
+  background: var(--rail-empty);
+}
+
+.fol-cursor {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 55px;
+  height: 28px;
+  border-radius: 50px;
+  padding: 5px 15px;
+  border: 5px solid var(--bg);
+  background: #ffffff;
+  z-index: 4;
+  cursor: grab;
+  touch-action: none;
+}
+.fol-cursor.dragging {
+  cursor: grabbing;
+  transform: translate(-50%, -50%) scaleX(1.1);
+}
+
+.fol-bm-marker {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #f6c90e;
+  border: 5px solid #141824;
+  cursor: pointer;
+  z-index: 2;
+  animation: fol-bm-spawn 0.2s ease forwards, fol-bm-pulse-sm 2s ease-in-out infinite;
+}
+
+.fol-bm-marker.active {
+  width: 40px;
+  height: 60px;
+  border-radius: 50px;
+  border: 6px solid var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fol-bm-spawn 0.2s ease forwards, fol-bm-pulse-lg 2s ease-in-out infinite;
+}
+
+/* @keyframes fol-bm-pulse-sm {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(246,201,14,0.5); }
+  50%       { box-shadow: 0 0 0 4px rgba(246,201,14,0); }
+} */
+@keyframes fol-bm-pulse-lg {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(246,201,14,0.4); }
+  50%       { box-shadow: 0 0 0 6px rgba(246,201,14,0); }
+}
+/* @keyframes fol-bm-spawn {
+  0%   { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+  100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+} */
+
+.fol-bm-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 15px 25px;
+  background: rgba(13, 17, 23, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-top: 1px solid #1e2130;
+}
+
+.fol-bm-btn {
+  background: transparent;
+  border: 1px solid #2a2a3e;
+  border-radius: 25px;
+  color: #7a7a9a;
+  font-family: monospace;
+  font-size: 16px;
+  padding: 10px 14px;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+.fol-bm-btn:disabled { opacity: 0.3; cursor: default; }
+
+.fol-bm-set {
+  border-color: #f6c90e;
+  color: #f6c90e;
+  background: rgba(246,201,14,0.07);
+  border: 3px solid #f6c90e;
+}
+.fol-bm-set:hover:not(:disabled) { background: rgba(246,201,14,0.18); }
+
+.fol-bm-del {
+  border-color: #f06292;
+  color: #f06292;
+  background: rgba(240,98,146,0.07);
+  border: 3px solid #f06292;
+}
+.fol-bm-del:hover:not(:disabled) { background: rgba(240,98,146,0.18); }
+
+.fol-bm-nav {
+  border-color: #2a2a3e;
+  color: #7a7a9a;
+  border: 3px solid #2a2a3e;
+}
+.fol-bm-nav:hover:not(:disabled) { border-color: #4fc3f7; color: #4fc3f7; background: rgba(79,195,247,0.06); }
+
+.fol-toast {
+  position: fixed;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1a1a2e;
+  border: 3px solid #f6c90e;
+  color: #f6c90e;
+  font-family: monospace;
+  font-size: 16px;
+  padding: 15px 18px;
+  border-radius: 25px;
+  opacity: 0;
+  pointer-events: none;
+  white-space: nowrap;
+  z-index: 9998;
+  transition: opacity 0.25s;
+}
+.fol-toast.show { opacity: 1; }
+
+@media (max-width: 860px) {
+  .fol-bm-bar { gap: 6px; padding: 8px 10px; }
+  .fol-bm-btn { font-size: 11px; padding: 6px 10px; }
+}
+
 /* Footer */
-footer { 
+footer {
     text-align: center;
 }
 
@@ -751,7 +916,8 @@ footer .imprint:hover {
     color: var(--accent);
 }
 
-.fck-nzs {
+.fck-nzs:hover {
+    cursor: pointer;
     color: #d33bb7;
 }
 
