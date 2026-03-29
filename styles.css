@@ -861,8 +861,8 @@ h2 {
   border-radius: 25px;
   color: #7a7a9a;
   font-family: monospace;
-  font-size: 16px;
-  padding: 10px 14px;
+  font-size: 14px;
+  padding: 10px 15px;
   cursor: pointer;
   transition: border-color 0.15s, color 0.15s, background 0.15s;
 }
@@ -913,7 +913,7 @@ h2 {
 
 @media (max-width: 900px) {
   .fol-bm-bar { gap: 6px; padding: 8px 10px; }
-  .fol-bm-btn { font-size: 11px; padding: 6px 10px; }
+  .fol-bm-btn { font-size: 14px; padding: 10px 15px; }
 }
 
 /* Mobile: Rail verkleinern */
