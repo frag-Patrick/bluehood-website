@@ -1359,7 +1359,7 @@ body.ep-game-page footer {
 .ep-msg-avatar.ben  .ep-msg-avatar-circle { background: #4caf97; }
 .ep-msg-avatar.zoe  .ep-msg-avatar-circle { background: #f0c040; color: #1a1a2e; }
 .ep-msg-avatar-name {
-  font-size: 9px;
+  font-size: 11px;
   color: var(--muted);
   letter-spacing: 1px;
   font-family: monospace;
@@ -1370,22 +1370,22 @@ body.ep-game-page footer {
 .ep-msg-sender { display: none; }
 
 .ep-bubble {
-  padding: 12px 18px;
+  padding: 10px 15px;
   border-radius: 30px;
   font-size: 14px;
   line-height: 1.65;
   font-family: monospace;
 }
 
-.ep-msg-row.luke   .ep-bubble { background: var(--card); border: 2px solid rgba(59, 140, 226, 0.8);  border-radius: 6px 30px 30px 30px; color: var(--text); }
-.ep-msg-row.mia    .ep-bubble { background: var(--card); border: 2px solid rgba(240,98,146,.8);   border-radius: 6px 30px 30px 30px; color: var(--text); }
-.ep-msg-row.ben    .ep-bubble { background: var(--card); border: 2px solid rgba(76,175,151,.8);   border-radius: 6px 30px 30px 30px; color: var(--text); }
-.ep-msg-row.zoe    .ep-bubble { background: var(--card); border: 2px solid rgba(240,192,64,.8);   border-radius: 6px 30px 30px 30px; color: var(--text); }
+.ep-msg-row.luke   .ep-bubble { background: var(--card); border: 2px solid rgba(59, 140, 226, 0.8);  border-radius: 20px 20px 20px 20px; color: var(--text); }
+.ep-msg-row.mia    .ep-bubble { background: var(--card); border: 2px solid rgba(240,98,146,.8);   border-radius: 20px 20px 20px 20px; color: var(--text); }
+.ep-msg-row.ben    .ep-bubble { background: var(--card); border: 2px solid rgba(76,175,151,.8);   border-radius: 20px 20px 20px 20px; color: var(--text); }
+.ep-msg-row.zoe    .ep-bubble { background: var(--card); border: 2px solid rgba(240,192,64,.8);   border-radius: 20px 20px 20px 20px; color: var(--text); }
 
 .ep-msg-row.player .ep-bubble {
   background: var(--accent);
   border: 2px solid var(--accent);
-  border-radius: 30px 6px 30px 30px;
+  border-radius: 20px 20px 20px 20px;
   color: #fff;
   box-shadow: 0 2px 20px rgba(9,101,239,.3);
 }
@@ -1414,16 +1414,16 @@ body.ep-game-page footer {
 .ep-typing-bubble {
   background: var(--card);
   border: 2px solid var(--border);
-  border-radius: 6px 30px 30px 30px;
-  padding: 12px 20px;
+  border-radius: 30px 30px 30px 30px;
+  padding: 12px 15px;
   display: flex;
-  gap: 5px;
+  gap: 7px;
   align-items: center;
 }
 
 .ep-typing-bubble span {
-  width: 7px;
-  height: 7px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   background: var(--muted);
   animation: ep-bounce 1.3s infinite;
@@ -1438,7 +1438,7 @@ body.ep-game-page footer {
 }
 
 .ep-typing-name {
-  font-size: 11px;
+  font-size: 12px;
   color: var(--muted);
   letter-spacing: 2px;
   margin-bottom: 4px;

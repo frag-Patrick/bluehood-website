@@ -93,7 +93,7 @@ const STORY = {
       { who: 'player', text: 'Wie funktioniert das Spiel?' },
       { who: 'luke', text: 'Du bekommst einen Fall. Unten stehen deine möglichen Aktionen – wähl eine aus, und das Team reagiert.' },
       { who: 'luke', text: 'Manche Pfade führen schneller ans Ziel. Andere über Umwege. Aber du kommst immer ans Ziel.' },
-      { who: 'ben',  text: 'In der Seitenleiste siehst du welche Hinweise du schon aufgedeckt hast. Je mehr du findest, desto vollständiger ist deine Analyse.' },
+      { who: 'ben',  text: 'In der rechten Seitenleiste oben bei 📋 Fall-Infos siehst du welche Hinweise du schon aufgedeckt hast. Je mehr du findest, desto vollständiger ist deine Analyse.' },
       { who: 'mia',  text: 'Und wichtig: Es gibt keinen "Game Over" Screen. Kein Scheitern. Du lernst echte Angriffsmuster – auf dein eigenes Tempo.' },
       { who: 'zoe',  text: 'Als ich das erste Mal hier war hab ich auch erstmal nur Fragen gestellt.' },
       { who: 'luke', text: 'Das waren fünfzehn Minuten.' },
