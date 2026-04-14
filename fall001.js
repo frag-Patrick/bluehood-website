@@ -23,15 +23,20 @@ const STORY = {
     messages: [
       { who: 'system', text: () => `⚡ EINGEHENDER FALL // #001 // ${new Date().toLocaleTimeString('de-DE', {hour:'2-digit', minute:'2-digit'})}` },
       { who: 'luke',   text: 'Dieter Hoffmann, 54, Buchhalter. Sein PC ist seit drei Wochen extrem langsam. Der Lüfter läuft dauerhaft auf Maximum. Seine Stromrechnung ist gestiegen.' },
-      { who: 'mia',    text: 'Er hat uns geschrieben: <span class="ep-red">"Ich glaub mein PC hat Fieber"</span> 😭' },
-      { who: 'ben',    text: 'PC-Fieber. Na klar, ich hoffe er hat ihm noch keinen Wadenwickel verpasst.' },
+      { who: 'mia',    text: 'Er hat uns geschrieben: <span class="ep-red">"Ich glaub mein PC hat Fieber"</span> 😭',
+        onPlayerReact: {
+          '❤️': async () => { await wait(600); showTyping('mia'); await wait(typingDuration('Der Arme 💙')); removeTyping(); await addMsg('mia', 'Der Arme 💙'); },
+          '😂': async () => { await wait(500); showTyping('ben'); await wait(typingDuration('Ehrlich gesagt, ich auch 😄')); removeTyping(); await addMsg('ben', 'Ehrlich gesagt, ich auch 😄'); },
+        }
+      },
+      { who: 'ben',    text: 'PC-Fieber. Na klar, ich hoffe er hat ihm noch keinen Wadenwickel verpasst.', reactions: [{ who: 'mia', emoji: '😂', delay: 1100 }] },
       { who: 'zoe',    text: 'Ist das häufig? Dass Leute das so beschreiben?' },
       { who: 'luke',   text: 'Oft genug. Fangen wir an.' },
     ],
     choices: [
-      { text: '🔍 CPU-Auslastung prüfen',           next: 'cpu' },
-      { text: '📡 Netzwerkverbindungen analysieren', next: 'network_early' },
-      { text: '💬 Dieter fragen: Was hast du zuletzt installiert?', next: 'ask_dieter' },
+      { text: '🔍 CPU-Auslastung prüfen',           next: 'cpu',           quality: 'good' },
+      { text: '📡 Netzwerkverbindungen analysieren', next: 'network_early', quality: 'meh'  },
+      { text: '💬 Dieter fragen: Was hast du zuletzt installiert?', next: 'ask_dieter', quality: 'good' },
     ]
   },
 
@@ -41,16 +46,20 @@ const STORY = {
       { who: 'luke',   text: 'Gute Entscheidung. Ich hab mich eben per Anydesk verbunden und kurz reingeschaut.' },
       { who: 'luke',   text: 'CPU: <span class="ep-red">94–98%</span>. Dauerhaft. Dieter schreibt gerade nur eine Excel-Tabelle.' },
       { who: 'ben',    text: '94% für Excel. Normal wären da 2–5%. Da läuft definitiv was im Hintergrund.' },
-      { who: 'mia',    text: 'Wie wenn jemand beim Autofahren versucht mit angezogener Handbremse vollgas zu geben.' },
-      { who: 'ben',    text: 'Und dann noch versucht zu driften!' },
+      { who: 'mia',    text: 'Wie wenn jemand beim Autofahren versucht mit angezogener Handbremse vollgas zu geben.', reactions: [{ who: 'ben', emoji: '😂', delay: 800 }] },
+      { who: 'ben',    text: 'Und dann noch versucht zu driften!', reactions: [{ who: 'mia', emoji: '❤️', delay: 900 }],
+        onPlayerReact: {
+          '😂': async () => { await wait(700); showTyping('ben'); await wait(typingDuration('Danke. Ich nehm das.')); removeTyping(); await addMsg('ben', 'Danke. Ich nehm das.'); },
+        }
+      },
       { who: 'luke',   text: 'Komischer vergleich..' },
       { who: 'zoe',    text: 'Ähm ja, aber was genau bringt den zum Schwitzen? Können wir sehen welche Prozesse aktiv sind?' },
     ],
     clue: 0,
     choices: [
-      { text: '🖥️ Task-Manager öffnen – Prozesse analysieren', next: 'processes' },
-      { text: '📡 Netzwerkverbindungen prüfen',                next: 'network' },
-      { text: '💬 Dieter fragen was er installiert hat',       next: 'ask_dieter' },
+      { text: '🖥️ Task-Manager öffnen – Prozesse analysieren', next: 'processes', quality: 'great' },
+      { text: '📡 Netzwerkverbindungen prüfen',                next: 'network',    quality: 'good'  },
+      { text: '💬 Dieter fragen was er installiert hat',       next: 'ask_dieter', quality: 'meh'   },
     ]
   },
 
@@ -63,8 +72,8 @@ const STORY = {
     ],
     clue: 0,
     choices: [
-      { text: '📡 Netzwerkverbindungen prüfen', next: 'network' },
-      { text: '🖥️ Erst Prozesse analysieren',         next: 'processes' },
+      { text: '📡 Netzwerkverbindungen prüfen', next: 'network',   quality: 'good' },
+      { text: '🖥️ Erst Prozesse analysieren',   next: 'processes', quality: 'good' },
     ]
   },
 
@@ -80,9 +89,9 @@ const STORY = {
       { who: 'luke',   text: 'Klingt verdächtig. Aber erstmal CPU und Prozesse checken um sicher zu gehen.' },
     ],
     choices: [
-      { text: '🔍 CPU-Auslastung prüfen',       next: 'cpu' },
-      { text: '🖥️ Prozesse analysieren',         next: 'processes' },
-      { text: '🕵️ Diese Datei untersuchen',       next: 'file_check' },
+      { text: '🔍 CPU-Auslastung prüfen',   next: 'cpu',        quality: 'good'  },
+      { text: '🖥️ Prozesse analysieren',    next: 'processes',  quality: 'good'  },
+      { text: '🕵️ Diese Datei untersuchen', next: 'file_check', quality: 'great' },
     ]
   },
 
@@ -92,14 +101,22 @@ const STORY = {
       { who: 'luke',   text: 'Ich hab die Liste.' },
       { who: 'luke',   text: 'Alles normal... warte. Da ist was: <span class="ep-red">svchost32_helper.exe</span>. Frisst alleine <span class="ep-red">87% CPU</span>.' },
       { who: 'ben',    text: 'Windows hat einen echten "svchost.exe". Aber "svchost<span class="ep-red">32_helper</span>"? Das ist ein Fake.' },
-      { who: 'mia',    text: 'Wie wenn ein Laden "McDonolds" heißt. Auf den ersten Blick normal, auf den zweiten... nope.' },
+      { who: 'mia',    text: 'Wie wenn ein Laden "McDonolds" heißt. Auf den ersten Blick normal, auf den zweiten... nope.',
+        onPlayerReact: {
+          '😂': async () => {
+            await wait(800);
+            showTyping('mia'); await wait(typingDuration('Danke 😅')); removeTyping();
+            await addMsg('mia', 'Danke 😅');
+          },
+        }
+      },
       { who: 'luke',   text: 'Mia, bleib bei der Sache.' },
       { who: 'zoe',    text: 'Okay, und was macht dieser Prozess genau?' },
     ],
     choices: [
-      { text: '📡 Netzwerkverbindungen dieses Prozesses prüfen', next: 'network' },
-      { text: '📁 Woher kommt diese Datei?',                    next: 'file_check' },
-      { text: '⚙️ Was macht der Prozess genau?',                next: 'what_does_it_do' },
+      { text: '📡 Netzwerkverbindungen dieses Prozesses prüfen', next: 'network',       quality: 'great' },
+      { text: '📁 Woher kommt diese Datei?',                    next: 'file_check',    quality: 'good'  },
+      { text: '⚙️ Was macht der Prozess genau?',                next: 'what_does_it_do', quality: 'good' },
     ]
   },
 
@@ -108,15 +125,15 @@ const STORY = {
       { who: 'player', text: 'Welche Netzwerkverbindungen laufen gerade?' },
       { who: 'luke',   text: 'Gefunden. <span class="ep-red">svchost32_helper.exe</span> baut alle 30 Sekunden eine Verbindung auf.' },
       { who: 'luke',   text: 'Ziel: <span class="ep-red">185.220.133.7</span>. Das scheint ein Rechenzentrum in Osteuropa zu sein. Niemand dort wartet auf Dieters Excel-Sheets.' },
-      { who: 'ben',    text: 'Kleine, regelmäßige Pakete. Fast wie ein Herzschlag. Da versucht jemand nicht aufzufallen, sehr verdächtig.' },
+      { who: 'ben',    text: 'Kleine, regelmäßige Pakete. Fast wie ein Herzschlag. Da versucht jemand nicht aufzufallen, sehr verdächtig.', reactions: [{ who: 'zoe', emoji: '👀', delay: 1400 }] },
       { who: 'mia',    text: 'Also Dieter schickt automatisch Daten irgendwohin und merkt es nicht. Das ist scheiße.' },
       { who: 'zoe',    text: 'Was genau wird da gesendet?' },
     ],
     clue: 1,
     choices: [
-      { text: '⚙️ Was wird gesendet? Prozess genauer analysieren', next: 'what_does_it_do' },
-      { text: '📁 Woher kommt die Schadsoftware?',                 next: 'file_check' },
-      { text: '🛡️ Wie entfernen wir das?',                         next: 'remove' },
+      { text: '⚙️ Was wird gesendet? Prozess genauer analysieren', next: 'what_does_it_do', quality: 'good' },
+      { text: '📁 Woher kommt die Schadsoftware?',                 next: 'file_check',      quality: 'good' },
+      { text: '🛡️ Wie entfernen wir das?',                         next: 'remove',          quality: 'meh'  },
     ]
   },
 
@@ -128,13 +145,21 @@ const STORY = {
       { who: 'ben',    text: 'Die Seite pdf-tools-kostenlos.net wurde vor 3 Monaten registriert. Die haben kein Impressum. Und der Serverstandort ist unbekannt.' },
       { who: 'mia',    text: 'Das Programm konvertiert tatsächlich PDFs, damit es nicht auffällt. Clever und eklig gleichzeitig.' },
       { who: 'zoe',    text: 'Also war das eine Falle von Anfang an?' },
-      { who: 'luke',   text: 'Ja. Das Einfallstor ist klar: <span class="ep-red">gefälschtes Freeware-Tool</span> aus inoffizieller Quelle.' },
+      { who: 'luke',   text: 'Ja. Das Einfallstor ist klar: <span class="ep-red">gefälschtes Freeware-Tool</span> aus inoffizieller Quelle.',
+        onPlayerReact: {
+          '👍': async () => {
+            await wait(600);
+            showTyping('luke'); await wait(typingDuration('Genau.')); removeTyping();
+            await addMsg('luke', 'Genau.');
+          },
+        }
+      },
     ],
     clue: 2,
     choices: [
-      { text: '⚙️ Was macht die Schadsoftware genau?', next: 'what_does_it_do' },
-      { text: '🛡️ Wie entfernen wir alles?',           next: 'remove' },
-      { text: '🕵️ Wer steckt dahinter?',               next: 'who_did_it' },
+      { text: '⚙️ Was macht die Schadsoftware genau?', next: 'what_does_it_do', quality: 'great' },
+      { text: '🛡️ Wie entfernen wir alles?',           next: 'remove',          quality: 'good'  },
+      { text: '🕵️ Wer steckt dahinter?',               next: 'who_did_it',      quality: 'good'  },
     ]
   },
 
@@ -149,9 +174,9 @@ const STORY = {
     ],
     clue: 3,
     choices: [
-      { text: '🕵️ Wer steckt dahinter?',     next: 'who_did_it' },
-      { text: '🛡️ Wie entfernen wir das?',   next: 'remove' },
-      { text: '💡 Hätte man das verhindern können?', next: 'prevention' },
+      { text: '🕵️ Wer steckt dahinter?',              next: 'who_did_it', quality: 'good'  },
+      { text: '🛡️ Wie entfernen wir das?',             next: 'remove',     quality: 'good'  },
+      { text: '💡 Hätte man das verhindern können?',   next: 'prevention', quality: 'great' },
     ]
   },
 
@@ -161,13 +186,21 @@ const STORY = {
       { who: 'luke',   text: 'IP zurückverfolgt. Anonymer Mining-Pool. Keine Namen, keine Gesichter.' },
       { who: 'luke',   text: 'Das Muster ist bekannt. Organisierte Gruppen verteilen gefälschte Freeware massenhaft.' },
       { who: 'ben',    text: 'Dieter wurde nicht gezielt ausgesucht. Er hat auf das falsche Google-Ergebnis geklickt.' },
-      { who: 'mia',    text: 'Das ist eigentlich das Gruseligste daran. Kein Mensch hat Dieter ausgewählt. Ein Skript hat ihn gefunden.' },
+      { who: 'mia',    text: 'Das ist eigentlich das Gruseligste daran. Kein Mensch hat Dieter ausgewählt. Ein Skript hat ihn gefunden.',
+        onPlayerReact: {
+          '❤️': async () => {
+            await wait(700);
+            showTyping('mia'); await wait(typingDuration('💙')); removeTyping();
+            await addMsg('mia', '💙');
+          },
+        }
+      },
       { who: 'zoe',    text: 'Also könnte das jedem passieren?' },
       { who: 'luke',   text: 'Jedem der nicht weiß worauf er achten muss. Genau deswegen sitzen wir hier.' },
     ],
     choices: [
-      { text: '🛡️ Wie entfernen wir die Schadsoftware?',   next: 'remove' },
-      { text: '💡 Hätte man das verhindern können?', next: 'prevention' },
+      { text: '🛡️ Wie entfernen wir die Schadsoftware?', next: 'remove',     quality: 'good'  },
+      { text: '💡 Hätte man das verhindern können?',     next: 'prevention', quality: 'great' },
     ]
   },
 
@@ -184,8 +217,8 @@ const STORY = {
       { who: 'luke',   text: '6. <span class="ep-hl">Echtes Windows-Update</span> durchführen. Danach neu starten. Dieter sollte wieder normal arbeiten können.' },
     ],
     choices: [
-      { text: '💡 Hätte man das verhindern können?', next: 'prevention' },
-      { text: '✅ Fall abschließen',                  next: 'end' },
+      { text: '💡 Hätte man das verhindern können?', next: 'prevention', quality: 'great' },
+      { text: '✅ Fall abschließen',                  next: 'end',        quality: 'good'  },
     ]
   },
 
@@ -200,7 +233,7 @@ const STORY = {
       { who: 'mia',    text: 'Weil es niemand erklärt. Deswegen sind wir hier.' },
     ],
     choices: [
-      { text: '✅ Fall abschließen', next: 'end' },
+      { text: '✅ Fall abschließen', next: 'end', quality: 'great' },
     ]
   },
 
@@ -215,13 +248,21 @@ const ambientMessages = [
     after: 'start',
     delay: 1100,
     who: 'mia',
-    text: 'Nebenbei – heute morgen bin ich fast in nen Typen reingefahren der sein Passwort auf nem Post-it am Laptop hatte. IN DER U-BAHN. 🛴'
+    text: 'Nebenbei – heute morgen bin ich fast in nen Typen reingefahren der sein Passwort auf nem Post-it am Laptop hatte. IN DER U-BAHN. 🛴',
+    reactions: [{ who: 'ben', emoji: '😮', delay: 1300 }, { who: 'zoe', emoji: '😂', delay: 2400 }]
   },
   {
     after: 'start',
     delay: 1500,
     who: 'ben',
-    text: 'Fun fact: (mein Router) läuft seit 847 Tagen ohne Neustart. Erwähne ich nur weil Dieter seinen PC wahrscheinlich nie neu gestartet hat.'
+    text: 'Fun fact: (mein Router) läuft seit 847 Tagen ohne Neustart. Erwähne ich nur weil Dieter seinen PC wahrscheinlich nie neu gestartet hat.',
+    onPlayerReact: {
+      '😂': async () => {
+        await wait(800);
+        showTyping('ben'); await wait(typingDuration('Ja ich weiß. 😄')); removeTyping();
+        await addMsg('ben', 'Ja ich weiß. 😄');
+      },
+    }
   },
 
   // ── BANTER 1 – nach 'cpu' ─────────────────────────────────────────────────
@@ -230,8 +271,12 @@ const ambientMessages = [
     delay: 2500,
     banter: [
       { who: 'mia',  text: 'Luke, erkläre mir Cryptojacking als wäre ich 5.' },
-      { who: 'luke', text: 'Jemand benutzt Dieters Spielzeug ohne zu fragen. Und Dieter zahlt die Batterien.', delay: 2500 },
-      { who: 'mia',  text: '...das war gut. Respekt.', delay: 2000 }
+      { who: 'luke', text: 'Jemand benutzt Dieters Spielzeug ohne zu fragen. Und Dieter zahlt die Batterien.', delay: 2500, reactions: [{ who: 'mia', emoji: '❤️', delay: 1000 }, { who: 'zoe', emoji: '👍', delay: 1800 }] },
+      { who: 'mia',  text: '...das war gut. Respekt.', delay: 2000,
+        onPlayerReact: {
+          '❤️': async () => { await wait(500); showTyping('mia'); await wait(typingDuration('💙')); removeTyping(); await addMsg('mia', '💙'); },
+        }
+      }
     ]
   },
 
@@ -287,7 +332,7 @@ const ambientMessages = [
     after: 'network',
     delay: 2000,
     banter: [
-      { who: 'mia',  text: 'Ich könnt den Mining-Pool auch einfach anrufen und fragen ob sie aufhören 😂' },
+      { who: 'mia',  text: 'Ich könnt den Mining-Pool auch einfach anrufen und fragen ob sie aufhören 😂', reactions: [{ who: 'ben', emoji: '😂', delay: 1000 }] },
       { who: 'luke', text: 'Das würde nicht funktionieren.', delay: 2000 },
       { who: 'mia',  text: 'Luke. Ich weiß. Das war ein Witz.', delay: 1500 },
       { who: 'luke', text: '...', delay: 1000 }
@@ -299,7 +344,7 @@ const ambientMessages = [
     after: 'file_check',
     delay: 2000,
     banter: [
-      { who: 'ben', text: '47 MB. Ich wein.' },
+      { who: 'ben', text: '47 MB. Ich wein.', reactions: [{ who: 'mia', emoji: '😂', delay: 900 }] },
       { who: 'zoe', text: 'Ist das viel?', delay: 1800 },
       { who: 'ben', text: 'Das ist mehr als mein erstes Betriebssystem, Zoe.', delay: 2000 },
       { who: 'zoe', text: 'Okay ich glaub ich muss das nicht verstehen um es schlimm zu finden.', delay: 2200 }
@@ -404,27 +449,70 @@ newMsgBtn.addEventListener('click', () => {
 
 const NAMES = { luke: 'LUKE', mia: 'MIA', ben: 'BEN', zoe: 'ZOE', player: 'DU', system: '' };
 
+// Tracks which message rows have player-reaction callbacks
+const reactionHandlers = new Map();
+let reactionPending = false;
+const pendingPlayerReactions = [];
+
+// Per-character reply personalities — null/missing means they don't react to that emoji
+// Maps player emoji → what the character reacts with on the player's next choice.
+// No 😂 — characters don't laugh at a player's serious action message.
+// Per-character emoji reactions based on decision quality
+const CHOICE_REACTION_MAP = {
+  luke: { great: '👍', good: '👍' },
+  mia:  { great: '🎉', good: '❤️', meh: '👀', bad: '😮' },
+  zoe:  { great: '🎉', good: '👍', meh: '👀', bad: '😮' },
+  ben:  { great: '🔥', good: '👍',             bad: '👀' },
+};
+
+window.onPlayerReaction = (row, emoji) => {
+  if (reactionPending) return;
+  // Run specific handler (follow-up messages etc.) if defined
+  const handlers = reactionHandlers.get(row);
+  if (!handlers || !handlers[emoji]) return;
+  reactionPending = true;
+  Promise.resolve(handlers[emoji](row)).finally(() => { reactionPending = false; });
+};
+
 function addMsg(who, html) {
   return new Promise(res => {
     const row = document.createElement('div');
+    const _nm = typeof nerdikonMarkup === 'function' ? nerdikonMarkup : h => h;
+
     if (who === 'system') {
       row.className = 'ep-msg-row system-msg';
       row.innerHTML = `<div class="ep-bubble">${html}</div>`;
     } else {
       const side = who === 'player' ? 'right' : 'left';
       row.className = `ep-msg-row ${who} ${side}`;
-      const _nm = typeof nerdikonMarkup === 'function' ? nerdikonMarkup : h => h;
+      row.dataset.who = who;
+
+      const wrap = document.createElement('div');
+      wrap.className = 'ep-msg-bubble-wrap';
+      const bubble = document.createElement('div');
+      bubble.className = 'ep-bubble';
+      bubble.innerHTML = _nm(html);
+      wrap.appendChild(bubble);
+
       if (who !== 'player') {
-        const nameHtml = `<span class="ep-msg-avatar-name">${NAMES[who]}</span>`;
-        const avatar = `<div class="ep-msg-avatar ${who}"><div class="ep-msg-avatar-circle">${who[0].toUpperCase()}</div>${nameHtml}</div>`;
-        row.innerHTML = `${avatar}<div class="ep-bubble">${_nm(html)}</div>`;
-      } else {
-        row.innerHTML = `<div class="ep-bubble">${_nm(html)}</div>`;
+        const avatar = document.createElement('div');
+        avatar.className = `ep-msg-avatar ${who}`;
+        avatar.innerHTML = `<div class="ep-msg-avatar-circle">${who[0].toUpperCase()}</div><span class="ep-msg-avatar-name">${NAMES[who]}</span>`;
+        row.appendChild(avatar);
+      }
+      row.appendChild(wrap);
+    }
+
+    if (who === 'player' && pendingPlayerReactions.length) {
+      const pending = pendingPlayerReactions.splice(0);
+      for (const p of pending) {
+        if (typeof scheduleCharReaction === 'function') scheduleCharReaction(row, p.who, p.emoji, p.delay);
       }
     }
     msgsEl.appendChild(row);
+    if (typeof attachReactionUI === 'function') attachReactionUI(row);
     if (userAtBottom) msgsEl.scrollTop = msgsEl.scrollHeight; else newMsgBtn.classList.add('visible');
-    setTimeout(res, 80);
+    setTimeout(() => res(row), 80);
   });
 }
 
@@ -481,7 +569,13 @@ async function playAmbient(key, gen) {
         await wait(typingDuration(b.text));
         if (gen !== ambientGen) { removeTyping(); return; }
         removeTyping();
-        await addMsg(b.who, b.text);
+        const bRow = await addMsg(b.who, b.text);
+        if (b.reactions) {
+          for (const r of b.reactions) {
+            if (typeof scheduleCharReaction === 'function') scheduleCharReaction(bRow, r.who, r.emoji, r.delay || 1200);
+          }
+        }
+        if (b.onPlayerReact) reactionHandlers.set(bRow, b.onPlayerReact);
         await wait(300);
       }
     } else {
@@ -490,7 +584,13 @@ async function playAmbient(key, gen) {
       await wait(typingDuration(item.text));
       if (gen !== ambientGen) { removeTyping(); return; }
       removeTyping();
-      await addMsg(item.who, item.text);
+      const ambRow = await addMsg(item.who, item.text);
+      if (item.reactions) {
+        for (const r of item.reactions) {
+          if (typeof scheduleCharReaction === 'function') scheduleCharReaction(ambRow, r.who, r.emoji, r.delay || 1200);
+        }
+      }
+      if (item.onPlayerReact) reactionHandlers.set(ambRow, item.onPlayerReact);
     }
   }
 }
@@ -520,7 +620,13 @@ async function playScene(key) {
       removeTyping();
     }
 
-    await addMsg(m.who, typeof m.text === 'function' ? m.text() : m.text);
+    const msgRow = await addMsg(m.who, typeof m.text === 'function' ? m.text() : m.text);
+    if (m.reactions) {
+      for (const r of m.reactions) {
+        if (typeof scheduleCharReaction === 'function') scheduleCharReaction(msgRow, r.who, r.emoji, r.delay || 1200);
+      }
+    }
+    if (m.onPlayerReact) reactionHandlers.set(msgRow, m.onPlayerReact);
     await wait(isSystem ? 400 : isPlayer ? 200 : 500);
   }
 
@@ -540,7 +646,18 @@ async function playScene(key) {
       const btn = document.createElement('button');
       btn.className = 'ep-choice-btn';
       btn.textContent = c.text;
-      btn.onclick = () => playScene(c.next);
+      btn.onclick = () => {
+        if (c.quality) {
+          const skipChance = c.quality === 'great' ? 0.10 : c.quality === 'meh' ? 0.40 : 0.25;
+          for (const [who, map] of Object.entries(CHOICE_REACTION_MAP)) {
+            const emoji = map[c.quality];
+            if (emoji && Math.random() > skipChance) {
+              pendingPlayerReactions.push({ who, emoji, delay: 700 + Math.floor(Math.random() * 900) });
+            }
+          }
+        }
+        playScene(c.next);
+      };
       gridEl.appendChild(btn);
     });
   }

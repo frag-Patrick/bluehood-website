@@ -140,9 +140,163 @@ function initSidebarDrawer() {
   });
 }
 
+// ── Reaction System ──────────────────────────────────────────────────────────
+
+const REACTION_EMOJIS = ['❤️', '👍', '😂', '😮', '👀', '🔥'];
+
+function attachReactionUI(row) {
+  if (row.classList.contains('system-msg')) return;
+  const wrap = row.querySelector('.ep-msg-bubble-wrap');
+  if (!wrap) return;
+
+  // Picker (CSS order: -1 makes it appear above the bubble)
+  const picker = document.createElement('div');
+  picker.className = 'ep-reaction-picker';
+  REACTION_EMOJIS.forEach(emoji => {
+    const btn = document.createElement('button');
+    btn.className = 'ep-reaction-emoji-btn';
+    btn.textContent = emoji;
+    btn.setAttribute('aria-label', emoji);
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      picker.classList.remove('open');
+      addReactionBadge(row, 'player', emoji);
+      if (typeof window.onPlayerReaction === 'function') {
+        window.onPlayerReaction(row, emoji);
+      }
+    });
+    picker.appendChild(btn);
+  });
+  wrap.prepend(picker);
+
+  // Reaction row: strip of badges + trigger button
+  const reactionRow = document.createElement('div');
+  reactionRow.className = 'ep-reaction-row';
+
+  const strip = document.createElement('div');
+  strip.className = 'ep-reaction-strip';
+  reactionRow.appendChild(strip);
+
+  const trigger = document.createElement('button');
+  trigger.className = 'ep-reaction-trigger';
+  trigger.setAttribute('aria-label', 'Reagieren');
+  trigger.textContent = '+';
+  trigger.addEventListener('click', e => {
+    e.stopPropagation();
+    const isOpen = picker.classList.contains('open');
+    document.querySelectorAll('.ep-reaction-picker.open').forEach(p => p.classList.remove('open'));
+    if (!isOpen) picker.classList.add('open');
+  });
+  reactionRow.appendChild(trigger);
+
+  wrap.appendChild(reactionRow);
+}
+
+function addReactionBadge(row, who, emoji) {
+  const strip = row.querySelector('.ep-reaction-strip');
+  if (!strip) return;
+
+  const displayName = who === 'player' ? 'Du' : ((window['NAMES'] && window['NAMES'][who]) || who);
+
+  let badge = Array.from(strip.querySelectorAll('.ep-reaction-badge'))
+    .find(b => b.dataset.emoji === emoji);
+
+  if (badge) {
+    const count = parseInt(badge.dataset.count || '1') + 1;
+    badge.dataset.count = count;
+    badge.querySelector('.ep-reaction-count').textContent = count;
+    if (who === 'player') badge.classList.add('player-reacted');
+    const reactors = JSON.parse(badge.dataset.reactors || '[]');
+    reactors.push(displayName);
+    badge.dataset.reactors = JSON.stringify(reactors);
+  } else {
+    badge = document.createElement('span');
+    badge.className = 'ep-reaction-badge' + (who === 'player' ? ' player-reacted' : '');
+    badge.dataset.emoji = emoji;
+    badge.dataset.count = '1';
+    badge.dataset.reactors = JSON.stringify([displayName]);
+    badge.innerHTML = `<span>${emoji}</span><span class="ep-reaction-count">1</span>`;
+    badge.addEventListener('click', () => {
+      if (!badge.classList.contains('player-reacted')) return;
+      badge.classList.remove('player-reacted');
+      const newCount = parseInt(badge.dataset.count || '1') - 1;
+      const reactors = JSON.parse(badge.dataset.reactors || '[]');
+      const idx = reactors.lastIndexOf('Du');
+      if (idx !== -1) reactors.splice(idx, 1);
+      if (newCount <= 0) {
+        badge.remove();
+      } else {
+        badge.dataset.count = newCount;
+        badge.dataset.reactors = JSON.stringify(reactors);
+        badge.querySelector('.ep-reaction-count').textContent = newCount;
+      }
+    });
+    strip.appendChild(badge);
+  }
+  badge.classList.remove('pop');
+  void badge.offsetWidth;
+  badge.classList.add('pop');
+}
+
+function scheduleCharReaction(row, who, emoji, delay) {
+  setTimeout(() => addReactionBadge(row, who, emoji), delay);
+}
+
+// Close all pickers on outside click
+document.addEventListener('click', () => {
+  document.querySelectorAll('.ep-reaction-picker.open').forEach(p => p.classList.remove('open'));
+});
+
+// ── Reaction Tooltip (who reacted) ──────────────────────────────────────────
+
+function injectReactionTooltip() {
+  if (document.getElementById('epReactionTooltip')) return;
+  const tip = document.createElement('div');
+  tip.id = 'epReactionTooltip';
+  tip.className = 'ep-reaction-tooltip';
+  document.body.appendChild(tip);
+}
+
+document.addEventListener('mouseover', e => {
+  const badge = e.target.closest('.ep-reaction-badge');
+  if (!badge) return;
+  const reactors = JSON.parse(badge.dataset.reactors || '[]');
+  if (!reactors.length) return;
+  const tip = document.getElementById('epReactionTooltip');
+  if (!tip) return;
+  tip.textContent = reactors.join(', ');
+  const rect = badge.getBoundingClientRect();
+  tip.style.left = (rect.left + rect.width / 2 + window.scrollX) + 'px';
+  tip.style.top = (rect.top + window.scrollY - 6) + 'px';
+  tip.classList.add('visible');
+});
+
+document.addEventListener('mouseout', e => {
+  if (!e.target.closest('.ep-reaction-badge')) return;
+  const tip = document.getElementById('epReactionTooltip');
+  if (tip) tip.classList.remove('visible');
+});
+
+document.addEventListener('touchstart', e => {
+  const badge = e.target.closest('.ep-reaction-badge');
+  if (!badge) return;
+  const reactors = JSON.parse(badge.dataset.reactors || '[]');
+  if (!reactors.length) return;
+  const tip = document.getElementById('epReactionTooltip');
+  if (!tip) return;
+  tip.textContent = reactors.join(', ');
+  const rect = badge.getBoundingClientRect();
+  tip.style.left = (rect.left + rect.width / 2 + window.scrollX) + 'px';
+  tip.style.top = (rect.top + window.scrollY - 6) + 'px';
+  tip.classList.add('visible');
+  clearTimeout(tip._touchTimer);
+  tip._touchTimer = setTimeout(() => tip.classList.remove('visible'), 2000);
+}, { passive: true });
+
 // ── Auto-init ────────────────────────────────────────────────────────────────
 
 document.addEventListener('DOMContentLoaded', () => {
   injectNerdikonPopup();
+  injectReactionTooltip();
   initSidebarDrawer();
 });
