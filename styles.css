@@ -944,6 +944,22 @@ h2 {
   }
 }
 
+@media (max-width: 450px) {
+  .fol-rail {
+      display: none;
+    }
+  
+    .fol-bm-bar {
+      gap: 6px;
+      padding: 8px 10px;
+    }
+  
+    .fol-bm-btn {
+      font-size: 8px;
+      padding: 10px 10px;
+    }
+}
+
 /* Footer */
 footer {
     text-align: center;
