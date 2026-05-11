@@ -945,10 +945,7 @@ h2 {
 }
 
 @media (max-width: 450px) {
-  .fol-rail {
-      display: none;
-    }
-  
+    
     .fol-bm-bar {
       gap: 6px;
       padding: 8px 10px;
