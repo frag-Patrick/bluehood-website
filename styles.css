@@ -912,8 +912,15 @@ h2 {
 .fol-toast.show { opacity: 1; }
 
 @media (max-width: 900px) {
-  .fol-bm-bar { gap: 6px; padding: 8px 10px; }
-  .fol-bm-btn { font-size: 14px; padding: 10px 15px; }
+  .fol-bm-bar {
+    gap: 6px;
+    padding: 8px 10px 30px 10px;
+  }
+
+  .fol-bm-btn {
+    font-size: 14px;
+    padding: 15px 18px;
+  }
 }
 
 /* Mobile: Rail verkleinern */
@@ -948,11 +955,11 @@ h2 {
     
     .fol-bm-bar {
       gap: 6px;
-      padding: 8px 10px;
+      padding: 8px 10px 30px 10px;
     }
   
     .fol-bm-btn {
-      font-size: 8px;
+      font-size: 9px;
       padding: 10px 10px;
     }
 }
