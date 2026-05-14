@@ -1374,10 +1374,11 @@ body.ep-game-page footer {
   color: #fff;
   flex-shrink: 0;
 }
-.ep-msg-avatar.luke .ep-msg-avatar-circle { background: #2d8cf0; }
-.ep-msg-avatar.mia  .ep-msg-avatar-circle { background: #f06292; }
-.ep-msg-avatar.ben  .ep-msg-avatar-circle { background: #4caf97; }
-.ep-msg-avatar.zoe  .ep-msg-avatar-circle { background: #f0c040; color: #1a1a2e; }
+.ep-msg-avatar.luke    .ep-msg-avatar-circle { background: #2d8cf0; }
+.ep-msg-avatar.mia     .ep-msg-avatar-circle { background: #f06292; }
+.ep-msg-avatar.ben     .ep-msg-avatar-circle { background: #4caf97; }
+.ep-msg-avatar.zoe     .ep-msg-avatar-circle { background: #f0c040; color: #1a1a2e; }
+.ep-msg-avatar.sandra  .ep-msg-avatar-circle { background: #e8923a; }
 .ep-msg-avatar-name {
   font-size: 11px;
   color: var(--muted);
@@ -1401,6 +1402,7 @@ body.ep-game-page footer {
 .ep-msg-row.mia    .ep-bubble { background: var(--card); border: 2px solid rgba(240,98,146,.8);   border-radius: 20px 20px 20px 20px; color: var(--text); }
 .ep-msg-row.ben    .ep-bubble { background: var(--card); border: 2px solid rgba(76,175,151,.8);   border-radius: 20px 20px 20px 20px; color: var(--text); }
 .ep-msg-row.zoe    .ep-bubble { background: var(--card); border: 2px solid rgba(240,192,64,.8);   border-radius: 20px 20px 20px 20px; color: var(--text); }
+.ep-msg-row.sandra .ep-bubble { background: var(--card); border: 2px solid rgba(232,146,58,.8);   border-radius: 20px 20px 20px 20px; color: var(--text); }
 
 .ep-msg-row.player .ep-bubble {
   background: var(--accent);
