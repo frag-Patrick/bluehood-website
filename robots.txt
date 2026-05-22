@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /danke-newsletter.html
+Disallow: /joined-bluehood.html
